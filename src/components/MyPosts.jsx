@@ -1,11 +1,12 @@
 import Button from "./Button";
+import s from "./MyPosts.module.css"
 
 const MyPosts = () => {
     return (
-        <div className="myposts">
+        <div className={s.myposts}>
             <h2>My Posts</h2>
             <textarea placeholder="Enter your message..." autoFocus/>
-            <div className="button-send">
+            <div className={s.button_send}>
                 <Button/>
             </div>
         </div>

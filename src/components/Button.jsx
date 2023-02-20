@@ -1,7 +1,8 @@
+import s from "./Button.module.css"
 const Button = () => {
     return (
 
-            <button className="btn" type="submit">Send</button>
+            <button className={s.btn} type="submit">Send</button>
 
     )
 }

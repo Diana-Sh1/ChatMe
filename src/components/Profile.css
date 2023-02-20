@@ -44,30 +44,3 @@
     font-size: 1.5rem;
     line-height: 2rem;
 }
-.myposts {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-
-}
-.myposts h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    padding-bottom: 30px;
-}
-.myposts textarea {
-    height: 100px;
-    resize: none;
-    /*border: 1px solid gray;*/
-    margin-bottom: 20px;
-    background-color: #ecf0f1;
-}
-.button-send {
-    display: flex;
-    justify-content: flex-end;
-}
-.button-send button {
-    background-color: cadetblue;
-    color: rgb(0, 0, 0, 60%);
-
-}
