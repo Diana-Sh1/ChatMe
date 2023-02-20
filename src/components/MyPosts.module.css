@@ -16,11 +16,11 @@
     margin-bottom: 20px;
     background-color: #ecf0f1;
 }
-.button_send {
+.btn {
     display: flex;
     justify-content: flex-end;
 }
-.button_send button {
+.btn button {
     background-color: cadetblue;
     color: rgb(0, 0, 0, 60%);
 

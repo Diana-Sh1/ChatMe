@@ -6,7 +6,7 @@ const MyPosts = () => {
         <div className={s.myposts}>
             <h2>My Posts</h2>
             <textarea placeholder="Enter your message..." autoFocus/>
-            <div className={s.button_send}>
+            <div className={s.btn}>
                 <Button/>
             </div>
         </div>

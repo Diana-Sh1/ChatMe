@@ -3,7 +3,7 @@
     /*background-color: beige;*/
 
 }
-.content__inner {
+.inner {
     padding: 0 30px;
 }
 .content img {
@@ -14,24 +14,24 @@
     width: 100%;
     display: block;
 }
-.profile-content {
+.profile_content {
     display: flex;
     width: 100%;
     margin: 30px 0 30px 0;
     gap: 40px;
 }
 
-.profile__img {
+.image {
     flex: 1 1 20%;
 }
 .profile__img img {
     max-width: 100%;
     object-fit: cover;
 }
-.profile__card {
+.card {
     flex: 1 1 80%;
 }
-.profile__card h2 {
+.card h2 {
     font-size: 2rem;
     margin-bottom: 10px;
 }
