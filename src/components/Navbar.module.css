@@ -1,0 +1,26 @@
+.nav {
+    grid-area: n;
+    background-color: lightgray;
+    text-align: center;
+    width: 100%;
+}
+.nav ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.nav li {
+    margin-bottom: 10px;
+    text-decoration: none;
+    list-style: none;
+    transition: all 0.5s ease;
+}
+.nav li:hover {
+    transform: translate(5px,0);
+}
+.nav a{
+    text-decoration: none;
+    color: rgb(0, 0, 0, 60%);
+    font-size: 25px;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,27 @@
+
+.header {
+    grid-area: h;
+    background-color: cadetblue;
+    height: 100%;
+    display: flex;
+
+}
+.logo {
+    height: 100%;
+    line-height: 60px;
+    display: flex;
+
+}
+.logo h1 {
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 30px;
+}
+.logo img {
+    width: 80px;
+    vertical-align: middle;
+    left: 5%;
+    margin-left: 20px;
+
+}
