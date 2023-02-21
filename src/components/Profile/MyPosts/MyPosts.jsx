@@ -10,7 +10,8 @@ const MyPosts = () => {
             <div className={s.btn}>
                 <Button/>
             </div>
-            <Post/>
+            <Post message="Hi, how are you?"/>
+            <Post message="I's my first react app"/>
         </div>
 
     )
