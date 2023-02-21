@@ -3,8 +3,8 @@ const Navbar = () => {
     return (
         <nav className={s.nav}>
             <ul>
-                <li><a href="my-app/src/components">Profile</a></li>
-                <li><a href="my-app/src/components">Messages</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/dialogs">Messages</a></li>
                 <li><a href="my-app/src/components">News</a></li>
                 <li><a href="my-app/src/components">Music</a></li>
                 <br/>

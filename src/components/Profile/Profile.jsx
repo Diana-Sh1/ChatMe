@@ -6,7 +6,7 @@ const Profile = () => {
         <div>
             <div>
                 <img
-                    src="https://img.freepik.com/free-vector/hand-drawn-people-talking-illustrations_52683-72317.jpg?w=2000&t=st=1676643159~exp=1676643759~hmac=0c2d36d54749acc259531dfa4ee2f2bd9062a57185175d7ab647d01c760c6665"></img>
+                    src="https://img.freepik.com/free-vector/hand-drawn-people-talking-illustrations_52683-72317.jpg?w=2000&t=st=1676643159~exp=1676643759~hmac=0c2d36d54749acc259531dfa4ee2f2bd9062a57185175d7ab647d01c760c6665" alt="logo"></img>
                 <span className={s.line}></span>
             </div>
             <div className={s.inner}>
