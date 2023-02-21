@@ -24,7 +24,7 @@
 .image {
     flex: 1 1 20%;
 }
-.profile__img img {
+.image img {
     max-width: 100%;
     object-fit: cover;
 }

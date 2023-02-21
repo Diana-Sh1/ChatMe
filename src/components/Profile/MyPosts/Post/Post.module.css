@@ -1,0 +1,15 @@
+.item {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    background-color: #ffeaa7;
+    padding: 15px;
+}
+.image {
+    width: 40px;
+
+}
+.text {
+    width: 100%;
+    font-size: 1.2rem;
+}

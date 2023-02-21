@@ -1,5 +1,6 @@
-import Button from "./Button";
+import Button from "../../Button/Button";
 import s from "./MyPosts.module.css"
+import Post from "./Post/Post";
 
 const MyPosts = () => {
     return (
@@ -9,7 +10,9 @@ const MyPosts = () => {
             <div className={s.btn}>
                 <Button/>
             </div>
+            <Post/>
         </div>
+
     )
 }
 export default MyPosts;
