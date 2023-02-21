@@ -1,10 +1,9 @@
 import MyPosts from "./MyPosts/MyPosts";
-import Post from "./MyPosts/Post/Post";
 import s from './Profile.module.css'
 
 const Profile = () => {
     return (
-        <div className={s.content}>
+        <div>
             <div>
                 <img
                     src="https://img.freepik.com/free-vector/hand-drawn-people-talking-illustrations_52683-72317.jpg?w=2000&t=st=1676643159~exp=1676643759~hmac=0c2d36d54749acc259531dfa4ee2f2bd9062a57185175d7ab647d01c760c6665"></img>
