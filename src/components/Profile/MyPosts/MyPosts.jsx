@@ -6,7 +6,7 @@ const MyPosts = () => {
     return (
         <div className={s.myposts}>
             <h2>My Posts</h2>
-            <textarea placeholder="Enter your message..." autoFocus/>
+            <textarea placeholder="Enter your message..."/>
             <div className={s.btn}>
                 <Button/>
             </div>
