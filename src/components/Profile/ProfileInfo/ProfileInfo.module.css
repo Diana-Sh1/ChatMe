@@ -1,16 +1,9 @@
-
-.inner {
-    padding: 0 30px;
-}
-img {
+.content {
+    display: flex;
     width: 100%;
+    margin: 30px 0 30px 0;
+    gap: 40px;
 }
-.line {
-    border: 2px solid #6F3B22;
-    width: 100%;
-    display: block;
-}
-
 
 .image {
     flex: 1 1 25%;

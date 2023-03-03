@@ -1,11 +1,13 @@
 
+
+
 /*Обнуление*/
 * {padding: 0;margin: 0;border: 0;}
 *, *:before, *:after {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
 :focus, :active {outline: none;}
 a:focus, a:active {outline: none;}
 nav, footer, header, aside {display: block;}
-html, body {height: 100%;width: 100%;font-size: 100%;line-height: 1;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}
+html, body {min-height: 100%;width: 100%;font-size: 100%;line-height: 1;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}
 input, button, textarea {font-family: inherit;}
 input::-ms-clear {display: none;}
 button {cursor: pointer;}
@@ -18,27 +20,41 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: 400;}
 
 /*-----*/
 @font-face {
-    font-family: 'Open Sans', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    font-family: 'Roboto Mono', monospace;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+    /*font-family: 'Poppins', sans-serif;*/
+    /*src: url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');*/
 }
+
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    background-image: url("../public/texture2.svg"), linear-gradient(0deg, rgba(163,164,155,1) 0%, rgba(237,172,129,1) 48%, rgba(235,204,162,1) 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 
 .app-wrapper {
+    margin: 20px auto;
     display: grid;
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 3fr 9fr;
+    /*grid-gap: 10px;*/
     grid-template-areas: "h h"
                         "n c";
-    width: 1200px;
-    margin: 0 auto;
+    width: 1360px;
+
+    min-height: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    position: relative;
 
 }
 .app-wrapper-content {
     grid-area: c;
+    margin-top: 15px;
+
 }
 
 

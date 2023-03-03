@@ -2,7 +2,7 @@ import s from "./Button.module.css"
 const Button = () => {
     return (
 
-            <button className={s.btn} type="submit">Send</button>
+            <button className={s.button} type="submit">Send<img src="arrow3.svg" alt=""/></button>
 
     )
 }
