@@ -3,13 +3,15 @@ import s from './Profile.module.css'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
-const Profile = () => {
+
+const Profile = (props) => {
+
     return (
         <div>
             <div className={s.inner}>
                 <ProfileInfo/>
                 <span className={s.line}></span>
-                <MyPosts/>
+                <MyPosts posts={props.posts}/>
             </div>
         </div>
     )
