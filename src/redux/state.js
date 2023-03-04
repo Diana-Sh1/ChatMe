@@ -4,7 +4,6 @@ let state = {
             {id: 1, message: 'Hi, how are you?'},
             {id: 2, message: 'I\'s my first react app'}
         ]
-
     },
     dialogsPage: {
         messages: [
@@ -26,6 +25,5 @@ let state = {
             {id: 6, name: 'Petya'}
         ]
     }
-
 }
 export default state;

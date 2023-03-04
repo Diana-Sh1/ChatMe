@@ -7,6 +7,8 @@ import Profile from "./components/Profile/Profile";
 import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import SideBar from "./components/SideBar/Sidebar";
+
 
 
 
@@ -18,6 +20,7 @@ const App = (props) => {
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
+            <SideBar/>
 
             <div className='app-wrapper-content'>
                 <Routes>

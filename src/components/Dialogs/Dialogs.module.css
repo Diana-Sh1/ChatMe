@@ -98,6 +98,8 @@
     flex-direction: row;
     width: 80%;
     padding-bottom: 20px;
+}
+.person_message:nth-child(even) {
 
 }
 
@@ -106,9 +108,11 @@
     clip-path: polygon(100% 0, 100% 100%, 5% 100%, 5% 30%, 1% 14%, 5% 13%, 5% 0);
     border-radius: 10px;
     height: 100%;
-
     background-color: #fff;
     padding: 10px 40px;
+}
+.mymsg {
+
 }
 
 .image {
