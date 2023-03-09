@@ -69,7 +69,7 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-
+    position: relative;
 }
 
 .logo_name {
@@ -99,8 +99,9 @@
     width: 80%;
     padding-bottom: 20px;
 }
-.person_message:nth-child(even) {
 
+.person_message:last-child {
+    padding-bottom: 100px;
 }
 
 .message {
@@ -111,11 +112,45 @@
     background-color: #fff;
     padding: 10px 40px;
 }
-.mymsg {
 
-}
 
 .image {
     width: 60px;
     object-fit: contain;
 }
+
+.enter_text {
+    position: absolute;
+    bottom: -20px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #fff;
+    width: 80%;
+    left: 40px;
+}
+
+.enter_text textarea {
+    font-size: 1.2rem;
+    border: none;
+    resize: none;
+    height: 40px;
+    width: 90%;
+    position: relative;
+}
+
+.enter_text button {
+    /*font-size: 1.2rem;*/
+    padding-bottom: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #6F3B22;
+    /*bottom: 0;*/
+    /*top:50%;*/
+    right: 10px;
+    position: absolute;
+    width: 40px;
+    transform: scale(-1, 1);
+    height: 100%;
+
+}
+

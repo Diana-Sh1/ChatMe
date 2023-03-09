@@ -40,7 +40,7 @@ body {
     display: grid;
     grid-template-rows: 70px 1fr;
     grid-template-columns: 3fr 9fr;
-    /*grid-gap: 10px;*/
+
     grid-template-areas: "h h"
                         "n c";
     width: 1360px;
@@ -54,7 +54,7 @@ body {
 .app-wrapper-content {
     grid-area: c;
     margin-top: 15px;
-
+    height: 100%;
 }
 
 

@@ -1,0 +1,36 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #6F3B22;
+    padding: 80px 30px 50px 30px;
+
+}
+
+.content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
+.block {
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+    gap: 8px;
+}
+
+.item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    padding-bottom: 5px;
+    border-radius: 50%;
+}
+.user {
+    display: inline-block;
+}
+.user:before  {
+    content: url("online.png");
+    padding-right: 4px;
+}

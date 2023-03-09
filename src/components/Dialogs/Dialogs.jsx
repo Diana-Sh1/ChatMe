@@ -1,6 +1,7 @@
 import s from "./Dialogs.module.css"
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import Button from "../Button/Button";
 
 
 const Dialogs = (props) => {
@@ -10,7 +11,6 @@ const Dialogs = (props) => {
 
     return (
         <div className={s.content}>
-
             <h2 className={s.h2}>Dialogs</h2>
             <div className={s.dialogs}>
                 <ul className={s.dialogNav}>
@@ -18,8 +18,10 @@ const Dialogs = (props) => {
                 </ul>
                 <div className={s.messages}>
                     {messagesElements}
+
                 </div>
             </div>
+
         </div>
     )
 }

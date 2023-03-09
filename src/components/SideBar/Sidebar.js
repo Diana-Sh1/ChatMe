@@ -1,14 +1,15 @@
-import s from 'Sidebar.module.css'
+import s from './Sidebar.module.css'
+import Item from "./Item/Item";
 
-const SideBar = () => {
+const SideBar = (props) => {
+
+    let friendElement = props.sidebar.map(f => <Item person={f.person} src={f.src}/>);
+
     return (
         <div className={s.content}>
-            <h3>Friends</h3>
+            <h3>Friends online</h3>
             <div className={s.block}>
-                <div className={s.item}>
-                    <img src="" alt=""/>
-                    <span className={s.user}></span>
-                </div>
+                {friendElement}
 
             </div>
         </div>

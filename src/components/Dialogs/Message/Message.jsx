@@ -11,6 +11,10 @@ const Message = (props) => {
                 <span>{props.person}</span>
             </div>
             <div className={s.message}>{props.message}</div>
+            <div className={s.enter_text}>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <button><img src="arrow3.svg" alt=""/></button>
+            </div>
         </div>
     )
 }
