@@ -7,7 +7,7 @@ import Profile from "./components/Profile/Profile";
 import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {addPost, updateNewPostText} from "./redux/state";
+
 
 
 const App = (props) => {
@@ -21,7 +21,8 @@ const App = (props) => {
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path="/SOCHATTY" element={<SoChatty/>}/>
-                    <Route path="/profile" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}/>
+                    <Route path="/profile" element={<Profile profilePage={props.state.profilePage}
+                                                             dispatch={props.dispatch}/>}/>
                     <Route path="/dialogs/*" element={<Dialogs state={props.state.dialogsPage}/>}/>
                     <Route path="/music" element={<Music/>}/>
                     <Route path="/settings" element={<Settings/>}/>
