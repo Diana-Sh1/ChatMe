@@ -6,8 +6,9 @@ import Button from "../Button/Button";
 
 const Dialogs = (props) => {
 
-    let DialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElements = props.state.messages.map(m => <Message message={m.message} person={m.person} src={m.src}/>)
+    let state = props.store.getState().dialogsPage;
+    let DialogsElements = state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let messagesElements = state.messages.map(m => <Message store={props.store} message={m.message} person={m.person} src={m.src}/>)
 
     return (
         <div className={s.content}>
