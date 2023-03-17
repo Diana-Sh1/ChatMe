@@ -7,6 +7,7 @@ import Profile from "./components/Profile/Profile";
 import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 
@@ -22,7 +23,7 @@ const App = (props) => {
                 <Routes>
                     <Route path="/SOCHATTY" element={<SoChatty/>}/>
                     <Route path="/profile" element={<Profile store={props.store}/>}/>
-                    <Route path="/dialogs/*" element={<Dialogs store={props.store}/>}/>
+                    <Route path="/dialogs/*" element={<DialogsContainer store={props.store}/>}/>
                     <Route path="/music" element={<Music/>}/>
                     <Route path="/settings" element={<Settings/>}/>
                 </Routes>
