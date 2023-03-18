@@ -10,7 +10,6 @@ const SideBar = (props) => {
             <h3>Friends online</h3>
             <div className={s.block}>
                 {friendElement}
-
             </div>
         </div>
     )

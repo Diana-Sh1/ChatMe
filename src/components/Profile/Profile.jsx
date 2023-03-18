@@ -12,7 +12,7 @@ const Profile = (props) => {
             <div className={s.inner}>
                 <ProfileInfo/>
                 <span className={s.line}></span>
-                <MyPostsContainer store={props.store}/>
+                <MyPostsContainer/>
             </div>
         </div>
     )
