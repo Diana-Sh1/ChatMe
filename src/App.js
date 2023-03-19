@@ -11,7 +11,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 
-const App = (props) => {
+const App = () => {
 
     return (
         <BrowserRouter>
