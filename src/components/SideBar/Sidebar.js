@@ -3,7 +3,7 @@ import Item from "./Item/Item";
 
 const SideBar = (props) => {
 
-    let friendElement = props.sidebar.map(f => <Item person={f.person} src={f.src}/>);
+    let friendElement = props.sidebar.map(f => <Item person={f.person} key={f.id} src={f.src}/>);
 
     return (
         <div className={s.content}>
