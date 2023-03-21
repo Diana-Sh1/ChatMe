@@ -1,0 +1,41 @@
+.content {
+    background-color: #DCE0D0;
+    border-top-right-radius: 20px;
+    padding: 20px;
+}
+.inner {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-template-rows: 9fr 3fr;
+    grid-template-areas:
+            "logo main"
+            "logo buttons";
+    max-height: 100px;
+    width: 70%;
+    margin: 0 auto;
+    align-items: center;
+    padding: 10px 0;
+}
+.user_logo img {
+
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.user_logo {
+    width: 100%;
+    grid-area: logo;
+}
+.title {
+    font-size: 1.7rem;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.block_main {
+    grid-area: main;
+}
+.block_buttons {
+    grid-area: buttons;
+}
