@@ -1,7 +1,11 @@
 .content {
-    background-color: #DCE0D0;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(220,224,208,1) 54%, rgba(220,224,208,1) 100%);
+    /*background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(250,242,217,1) 100%);*/
     border-top-right-radius: 20px;
     padding: 20px;
+    height: 100%;
+
 }
 .inner {
     display: grid;
@@ -10,14 +14,19 @@
     grid-template-areas:
             "logo main"
             "logo buttons";
-    max-height: 100px;
+    max-height: 100%;
+    height: 120px;
     width: 70%;
-    margin: 0 auto;
+    margin: 10px auto;
     align-items: center;
     padding: 10px 0;
+    border-bottom: 2px dashed #719F9D;
+    border-right: 1px dashed #719F9D;
+    border-radius: 30px;
+
 }
 .user_logo img {
-
+    align-items: center;
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -27,15 +36,46 @@
 .user_logo {
     width: 100%;
     grid-area: logo;
+    height: 100%;
+    display: flex;
 }
-.title {
-    font-size: 1.7rem;
+.title{
     text-align: center;
-    padding-bottom: 20px;
+    font-size: 1.5rem;
+    padding: 0 5px;
+    margin-bottom: 20px;
+    color: #6F3B22;
+
+
 }
 .block_main {
     grid-area: main;
+    padding-bottom: 10px;
 }
 .block_buttons {
     grid-area: buttons;
+
+}
+.user_info {
+    font-size: 1.2rem;
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+.status_info {
+    font-style: italic;
+    max-height: 100%;
+}
+.block_buttons button {
+    margin-right: 20px;
+    /*background-color: rgba(255, 255, 255, 50%);*/
+    background-color: rgba(253, 203, 132, 0.5);
+    width: 100px;
+    height: 25px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+}
+.subscribe_btn:hover, .userInfo_btn:hover {
+    background-color: #fff;
+    color: #E6763F;
+    font-weight: 700;
 }
