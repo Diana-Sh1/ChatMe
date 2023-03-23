@@ -4,10 +4,6 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
     users: [
-        {id: 1, follower: false, name: 'Grigoriy', status: 'Hello!', srcLogo: 'friend1.png'},
-        {id: 2, follower: true, name: 'Anna', status: 'Free for chat', srcLogo: 'friend2.png'},
-        {id: 3, follower: true, name: 'Petya', status: 'Nice to meet you', srcLogo: 'logo_dialog.png'},
-        {id: 4, follower: false, name: 'Lada', status: 'I need friends', srcLogo: 'logo_dialog2.png'},
 
     ],
 
