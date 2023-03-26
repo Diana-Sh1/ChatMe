@@ -79,3 +79,10 @@
     color: #E6763F;
     font-weight: 700;
 }
+.pagination {
+    font-size: 1.2rem;
+}
+.selectedPage {
+    font-size: 1.5rem;
+    font-weight: 700;
+}

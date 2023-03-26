@@ -3,15 +3,18 @@ import s from "./Users.module.css"
 import axios from "axios";
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
+    componentDidMount() {
         axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
             this.props.setUsers(response.data.items)
         })
     }
     render() {
         return <div className={s.content}>
+
             <h2 className={s.title}>List of Users</h2>
+            <div className={s.pagination}>
+                <span>1</span><span className={s.selectedPage}>2</span><span>3</span><span>4</span><span>5</span>
+            </div>
             {
                 this.props.users.map(u =>
                     <div className={s.inner}>
