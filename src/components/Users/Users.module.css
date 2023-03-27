@@ -43,7 +43,7 @@
     text-align: center;
     font-size: 1.5rem;
     padding: 0 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #6F3B22;
 
 
@@ -81,8 +81,16 @@
 }
 .pagination {
     font-size: 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.pagination span {
+    padding-right: 5px;
+    color: #6A9290;
 }
 .selectedPage {
     font-size: 1.5rem;
     font-weight: 700;
+
 }

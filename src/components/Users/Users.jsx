@@ -1,45 +1,58 @@
 import React from "react";
 import s from "./Users.module.css"
-import axios from "axios";
 
-class Users extends React.Component {
-    componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            this.props.setUsers(response.data.items)
-        })
+
+let Users = (props) => {
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
-    render() {
-        return <div className={s.content}>
+    let slicedPages;
+    let curPage = props.currentPage;
 
-            <h2 className={s.title}>List of Users</h2>
-            <div className={s.pagination}>
-                <span>1</span><span className={s.selectedPage}>2</span><span>3</span><span>4</span><span>5</span>
-            </div>
-            {
-                this.props.users.map(u =>
-                    <div className={s.inner}>
-                        <div className={s.user_logo}>
-                            <img src={u.photos.small != null ? u.photos.small : "user_default.png"} alt=""/>
-                        </div>
-                        <div className={s.block_main}>
-                            <div className={s.user_info}>{u.name}</div>
-                            <div className={s.status_info}>{u.status}</div>
-                        </div>
-                        <div className={s.block_buttons}>
-                            {u.followed
-                                ? <button onClick={() => {
-                                    this.props.unfollow(u.id)
-                                }} className={s.subscribe_btn}>Unfollow</button>
-                                : <button onClick={() => {
-                                    this.props.follow(u.id)
-                                }} className={s.subscribe_btn}>Follow</button>}
-                            <button className={s.userInfo_btn}>User Info</button>
-                        </div>
+    if (curPage - 3 < 0) {
+        slicedPages = pages.slice(0, 5);
+    } else {
+        slicedPages = pages.slice(curPage - 3, curPage + 2);
+    }
+    return <div className={s.content}>
+        <h2 className={s.title}>List of Users</h2>
+        <div className={s.pagination}>
 
-                    </div>)
-            }
+            {slicedPages.map(p => {
+                debugger;
+                return <span onClick={() => {this.onPageChanged(p)}}
+                             className={props.currentPage === p ? s.selectedPage : ''}>{p}</span>})}
         </div>
 
-    }
+        {
+            this.props.users.map(u =>
+                <div className={s.inner}>
+                    <div className={s.user_logo}>
+                        <img src={u.photos.small != null ? u.photos.small : "user_default.png"} alt=""/>
+
+                    </div>
+                    <div className={s.block_main}>
+                        <div className={s.user_info}>{u.name}</div>
+                        <div className={s.status_info}>{u.status}</div>
+                    </div>
+                    <div className={s.block_buttons}>
+                        {u.followed
+                            ? <button onClick={() => {
+                                props.unfollow(u.id)
+                            }} className={s.subscribe_btn}>Unfollow</button>
+                            : <button onClick={() => {
+                                props.follow(u.id)
+                            }} className={s.subscribe_btn}>Follow</button>}
+                        <button className={s.userInfo_btn}>User Info</button>
+                    </div>
+
+                </div>)
+        }
+    </div>
+
 }
+
 export default Users;
