@@ -22,13 +22,16 @@ let Users = (props) => {
         <div className={s.pagination}>
 
             {slicedPages.map(p => {
-                debugger;
-                return <span onClick={() => {this.onPageChanged(p)}}
-                             className={props.currentPage === p ? s.selectedPage : ''}>{p}</span>})}
+                return <span onClick={() => {
+                    props.onPageChanged(p)
+                }}
+                             className={props.currentPage === p ? s.selectedPage : ''}>{p}</span>
+            })}
+
         </div>
 
         {
-            this.props.users.map(u =>
+            props.users.map(u =>
                 <div className={s.inner}>
                     <div className={s.user_logo}>
                         <img src={u.photos.small != null ? u.photos.small : "user_default.png"} alt=""/>
