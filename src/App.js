@@ -7,6 +7,7 @@ import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 
@@ -21,7 +22,7 @@ const App = () => {
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path="/SOCHATTY" element={<SoChatty/>}/>
-                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/profile" element={<ProfileContainer/>}/>
                     <Route path="/dialogs/*" element={<DialogsContainer/>}/>
                     <Route path="/music" element={<Music/>}/>
                     <Route path="/users" element={<UsersContainer/>}/>
