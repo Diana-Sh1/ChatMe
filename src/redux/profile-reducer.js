@@ -2,13 +2,15 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
+
 let initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?'},
         {id: 2, message: 'I\'s my first react app'}
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+
 }
 
 const profileReducer = (state = initialState,action) => {
