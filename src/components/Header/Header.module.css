@@ -5,6 +5,7 @@
     height: 70px;
     display: flex;
     border-radius: 20px;
+    justify-content: space-between;
     /*border-top-left-radius: 20px;*/
     /*border-top-right-radius: 20px;*/
 
@@ -17,4 +18,36 @@
     justify-content: center;
     padding: 10px;
 
+}
+.login {
+    letter-spacing: -1px;
+    color: #6F3B22;
+    text-align: center;
+    width: 100%;
+}
+.login_block {
+    height: 100%;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    cursor: pointer;
+}
+.login_img {
+
+    width: 100%;
+    height: 50px;
+    position: relative;
+    border: 1px dashed #AFA391;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+.login_img img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    object-fit: contain;
 }

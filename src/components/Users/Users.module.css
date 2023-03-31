@@ -54,6 +54,7 @@
 }
 .block_buttons {
     grid-area: buttons;
+    margin-bottom: 5px;
 
 }
 .user_info {

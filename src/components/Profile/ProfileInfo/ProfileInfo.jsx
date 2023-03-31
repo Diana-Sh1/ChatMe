@@ -26,7 +26,7 @@ const ProfileInfo = (props) => {
                     <span>{props.profile.contacts.facebook}</span>
                     <span className={s.title}>About me: </span>
                     <span>{props.profile.aboutMe}</span>
-                    <span className={s.title}>Looking for a job: {props.profile.lookingForAJob === true ? <img className={s.job_img} src={yes}></img> : <img className={s.job_img} src={no}></img> }</span>
+                    <span className={s.title}>Looking for a job: {props.profile.lookingForAJob ? <img className={s.job_img} src={yes}></img> : <img className={s.job_img} src={no}></img> }</span>
                 </div>
             </div>
         </div>
