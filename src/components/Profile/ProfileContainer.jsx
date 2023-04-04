@@ -1,10 +1,9 @@
 import React from "react";
 import Profile from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
-import {setUserProfile} from "../../redux/profile-reducer";
+import {getProfile, setUserProfile} from "../../redux/profile-reducer";
 import {useParams} from "react-router-dom";
-import {profileAPI} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 export function withRouter(Children){
     return(props)=>{
@@ -17,10 +16,12 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId;
         if (!userId) userId = 9;
 
-        profileAPI.getProfile(userId)
-            .then(data => {
-                this.props.setUserProfile(data)
-            })
+        this.props.getProfile(userId)
+        //
+        // usersAPI.getProfile(userId)
+        //     .then(data => {
+        //         this.props.setUserProfile(data)
+        //     })
     }
     render() {
         return (
@@ -33,4 +34,4 @@ let mapStateToProps = (state) => ({
 })
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
-export default connect(mapStateToProps, {setUserProfile}) (WithUrlDataContainerComponent);
+export default connect(mapStateToProps, {setUserProfile, getProfile}) (WithUrlDataContainerComponent);
