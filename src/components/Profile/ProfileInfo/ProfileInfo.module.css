@@ -33,6 +33,20 @@
     flex-direction: column;
 
 }
+.input_block {
+    line-height: 2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+.input_block:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+.status {
+
+    margin: 5px 0;
+    padding: 0 5px;
+}
 .text span {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -42,4 +56,10 @@
 }
 .job_img {
     width: 25px;
+}
+.input {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    width: 100%;
+
 }
