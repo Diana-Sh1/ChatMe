@@ -22,15 +22,17 @@
 .card {
     flex: 1 1 75%;
     color: #6F3B22;
+
 }
 .card h2 {
     font-size: 2rem;
     margin-bottom: 10px;
 
 }
-.text {
+.inner {
     display: flex;
     flex-direction: column;
+
 
 }
 .input_block {
@@ -38,16 +40,16 @@
     cursor: pointer;
     border-radius: 5px;
     padding: 0 10px;
+    max-width: 700px;
 }
 .input_block:hover {
     background-color: rgba(255,255,255,0.4);
 }
 .status {
-
     margin: 5px 0;
     padding: 0 5px;
 }
-.text span {
+.inner span {
     font-size: 1.5rem;
     line-height: 2rem;
 }
@@ -61,5 +63,6 @@
     font-size: 1.5rem;
     line-height: 2rem;
     width: 100%;
+
 
 }

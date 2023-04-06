@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.card}>
                 <h2>{props.profile.fullName}</h2>
-                <div className={s.text}>
+                <div className={s.inner}>
                     <span className={s.title}>Web Site:</span>
                     <span>{props.profile.contacts.website}</span>
                     <span className={s.title}>Contacts:</span>
@@ -25,7 +25,7 @@ const ProfileInfo = (props) => {
                     <span className={s.title}>Looking for a job: {props.profile.lookingForAJob ?
                         <img className={s.job_img} src={yes}></img> : <img className={s.job_img} src={no}></img>}
                     </span>
-                    <ProfileStatus status={props.status}/>
+                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
         </div>
