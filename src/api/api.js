@@ -22,7 +22,6 @@ export const usersAPI = {
             .then(response => response.data);
     },
     getProfile(userId) {
-        console.warn('Deprecated method. Please use ProfileAPI object')
         return profileAPI.getProfile(userId)
     }
 }
