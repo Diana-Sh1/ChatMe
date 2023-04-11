@@ -1,19 +1,55 @@
 import React from "react";
+import {useForm} from "react-hook-form";
+
 
 const LoginForm = (props) => {
+    const {register, formState: {errors, isValid}, handleSubmit, reset} = useForm({
+        mode: "onBlur"
+    });
+    const onSubmit = (data) => {
+
+        alert(JSON.stringify(data));
+        reset();
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <label>
+                First name: <br/>
+                <input {...register('name', {
+                    required: "Required field",
+                    minLength: {
+                        value: 3,
+                        message: "Min length 3 symbols"
+                    },
+                    maxLength: {
+                        value: 24,
+                        message: "Max length 24 symbols"
+                    },
+                    pattern: {
+                        value: /^\S*$/,
+                        message: "No whitespaces"
+                    }
+                })} />
+            </label>
+            <span>
+                {errors?.name && <p>{errors.name?.message || "Error!"} </p>}
+            </span>
             <div>
-                <input placeholder={"Login"}/>
+                <label>
+                    Password: <br/>
+                    <input {...register('password', {
+                        required: "Required field"
+                    })}/>
+                </label>
+                <span>
+                {errors?.password && <p>{errors.password?.message || "Error!"} </p>}
+            </span>
             </div>
+
+
             <div>
-                <input placeholder={"Password"}/>
-            </div>
-            <div>
-                <input type={"checkbox"}/>remember me
-            </div>
-            <div>
-                <button>Login</button>
+                <input type="submit" disabled={!isValid}/>
             </div>
         </form>
     )
