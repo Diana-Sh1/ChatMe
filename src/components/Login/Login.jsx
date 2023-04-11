@@ -23,8 +23,8 @@ const LoginForm = (props) => {
                         message: "Min length 3 symbols"
                     },
                     maxLength: {
-                        value: 24,
-                        message: "Max length 24 symbols"
+                        value: 20,
+                        message: "Max length 20 symbols"
                     },
                     pattern: {
                         value: /^\S*$/,
@@ -39,7 +39,11 @@ const LoginForm = (props) => {
                 <label>
                     Password: <br/>
                     <input {...register('password', {
-                        required: "Required field"
+                        required: "Required field",
+                        minLength: {
+                            value: 6,
+                            message: "Min length 6 symbols"
+                        }
                     })}/>
                 </label>
                 <span>
