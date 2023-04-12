@@ -13,7 +13,6 @@ const LoginForm = (props) => {
         alert(JSON.stringify(data));
         reset();
     }
-
     return (
         <div className={s.login}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +71,6 @@ const Login = (props) => {
                 </div>
                 <div className={s.picture}>
                     <img src={loginPic} alt=""/>
-                    <div className={s.square}></div>
                 </div>
 
             </div>
