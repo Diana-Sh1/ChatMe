@@ -2,7 +2,7 @@ import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import yes from "../../../assets/yes_pic.png"
 import no from "../../../assets/no_pic.png"
-import userDefaultPic from "../../../assets/user_default.png";
+import userDefaultPic from "../../../assets/user_default2.png";
 import ProfileStatus from "./ProfileStatus";
 
 

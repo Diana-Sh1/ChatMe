@@ -4,12 +4,12 @@ import s from "./Login.module.css"
 import loginPic from "../../assets/persons2.png"
 import logPic from "../../assets/loginPic.png"
 
+
 const LoginForm = (props) => {
     const {register, formState: {errors, isValid}, handleSubmit, reset} = useForm({
         mode: "onBlur"
     });
     const onSubmit = (data) => {
-
         alert(JSON.stringify(data));
         reset();
     }
@@ -33,11 +33,11 @@ const LoginForm = (props) => {
                             value: /^\S*$/,
                             message: "No whitespaces"
                         }
-                    })} />
+                    })} style={{border: errors.name ? '1px solid red' : '' }} />
                 </label>
-                <span>
-                {errors?.name && <p>{errors.name?.message || "Error!"} </p>}
-            </span>
+                <span >
+                     {errors?.name && <p className={s.errors}>{errors.name?.message} </p>}
+                 </span>
                 <div>
                     <label>
                         <p>Password:</p>
@@ -47,16 +47,16 @@ const LoginForm = (props) => {
                                 value: 6,
                                 message: "Min length 6 symbols"
                             }
-                        })}/>
+                        })} style={{border: errors.password ? '1px solid red' : '' }} />
                     </label>
-                    <span>
-                {errors?.password && <p>{errors.password?.message || "Error!"} </p>}
+                    <span className={s.errors}>
+                {errors?.password && <p className={s.p}>{errors.password?.message} </p>}
             </span>
                 </div>
 
 
                 <div>
-                    <input type="submit" disabled={!isValid} className={s.button} value="Send"/>
+                    <input type="submit" disabled={!isValid} className={s.button} value="Send" style={{color: isValid ? '#6F3B22' : '' }}/>
                 </div>
             </form>
         </div>
@@ -64,20 +64,20 @@ const LoginForm = (props) => {
 }
 const Login = (props) => {
     return <div className={s.content}>
-            <div className={s.inner}>
-                <div className={s.card}>
-                    <div className={s.loginForm}>
-                        <div className={s.logo}><img src={logPic} alt=""/></div>
-                        <LoginForm/>
-                    </div>
-                    <div className={s.picture}>
-                        <img src={loginPic} alt=""/>
-                        <div className={s.square}></div>
-                    </div>
-
+        <div className={s.inner}>
+            <div className={s.card}>
+                <div className={s.loginForm}>
+                    <div className={s.logo}><img src={logPic} alt=""/></div>
+                    <LoginForm />
                 </div>
+                <div className={s.picture}>
+                    <img src={loginPic} alt=""/>
+                    <div className={s.square}></div>
+                </div>
+
             </div>
         </div>
+    </div>
 
 }
 
