@@ -2,7 +2,7 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import s from "./Login.module.css"
 import loginPic from "../../assets/persons2.png"
-
+import logPic from "../../assets/loginPic.png"
 
 const LoginForm = (props) => {
     const {register, formState: {errors, isValid}, handleSubmit, reset} = useForm({
@@ -18,7 +18,7 @@ const LoginForm = (props) => {
         <div className={s.login}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
-                    First name: <br/>
+                    <p>First name:</p>
                     <input {...register('name', {
                         required: "Required field",
                         minLength: {
@@ -40,7 +40,7 @@ const LoginForm = (props) => {
             </span>
                 <div>
                     <label>
-                        Password: <br/>
+                        <p>Password:</p>
                         <input {...register('password', {
                             required: "Required field",
                             minLength: {
@@ -56,7 +56,7 @@ const LoginForm = (props) => {
 
 
                 <div>
-                    <input type="submit" disabled={!isValid}/>
+                    <input type="submit" disabled={!isValid} className={s.button} value="Send"/>
                 </div>
             </form>
         </div>
@@ -64,20 +64,21 @@ const LoginForm = (props) => {
 }
 const Login = (props) => {
     return <div className={s.content}>
-        <div className={s.inner}>
-            <div className={s.card}>
-                <div className={s.loginForm}>
-                    <div className={s.logo}><span>Log in</span></div>
-                    <LoginForm/>
-                </div>
-                <div className={s.picture}>
-                    <img src={loginPic} alt=""/>
-                    <div className={s.square}></div>
-                </div>
+            <div className={s.inner}>
+                <div className={s.card}>
+                    <div className={s.loginForm}>
+                        <div className={s.logo}><img src={logPic} alt=""/></div>
+                        <LoginForm/>
+                    </div>
+                    <div className={s.picture}>
+                        <img src={loginPic} alt=""/>
+                        <div className={s.square}></div>
+                    </div>
 
+                </div>
             </div>
         </div>
-    </div>
+
 }
 
 

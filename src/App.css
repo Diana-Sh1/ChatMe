@@ -25,7 +25,10 @@ h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: 400;}
     /*font-family: 'Poppins', sans-serif;*/
     /*src: url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');*/
 }
-
+@font-face {
+    font-family: 'Amatic SC', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+}
 body {
     font-family: 'Roboto Mono', monospace;
     background-image: url("../public/texture2.svg"), linear-gradient(0deg, rgba(163,164,155,1) 0%, rgba(237,172,129,1) 48%, rgba(235,204,162,1) 100%);
