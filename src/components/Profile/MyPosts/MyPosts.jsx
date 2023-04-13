@@ -2,7 +2,7 @@ import Button from "../../Button/Button";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import React from 'react'
-import {addPostActionCreator, updateNewPostActionCreator} from "../../../redux/profile-reducer";
+import {useForm} from "react-hook-form";
 
 
 const MyPosts = (props) => {
@@ -16,6 +16,13 @@ const MyPosts = (props) => {
         let text = newPostElement.current.value;
         props.updateNewPostText(text)
     }
+    const onSubmit = (data) => {
+        props.sendMessage(data.newMessageBody);
+        reset();
+    }
+    const {register, formState: {errors}, handleSubmit, reset} = useForm({
+        mode: "onSubmit"
+    });
 
     return (
         <div className={s.content}>

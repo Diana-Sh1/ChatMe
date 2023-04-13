@@ -8,7 +8,10 @@
     height: 100%;
 
 }
-
+.errors {
+    color: #ff4d4d;
+    font-size: 0.7rem;
+}
 .dialogs {
     display: grid;
     grid-template-columns: 2.5fr 9.5fr;
