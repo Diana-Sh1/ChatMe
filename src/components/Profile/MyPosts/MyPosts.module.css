@@ -31,3 +31,7 @@
     padding: 8px 25px;
    color: rgba(0,0,0,80%);
 }
+.errors {
+    color: #ff4d4d;
+    font-size: 0.7rem;
+}

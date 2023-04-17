@@ -6,18 +6,10 @@ import {useForm} from "react-hook-form";
 
 
 const MyPosts = (props) => {
-    let newPostElement = React.createRef();
 
-    let onAddPost = () => {
-        props.addPost();
-    }
     let postsElements = props.posts.map(p => <Post message={p.message}/>)
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text)
-    }
     const onSubmit = (data) => {
-        props.sendMessage(data.newMessageBody);
+        props.addPost(data.newPostText);
         reset();
     }
     const {register, formState: {errors}, handleSubmit, reset} = useForm({
@@ -27,12 +19,23 @@ const MyPosts = (props) => {
     return (
         <div className={s.content}>
             <h2 className={s.h2}>My Posts</h2>
-            <textarea className={s.textarea} onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
-            <div className={s.btn} onClick={onAddPost}>
-                <Button/>
-            </div>
-            {postsElements}
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input {...register('newPostText', {
+                    required: "Required field",
+                    maxLength: {
+                        value: 300,
+                        message: "Max length 300 symbols"
+                    },
 
+                    pattern: {
+                        value: /^(?! )/,
+                        message: "No whitespaces at the start of the line"
+                    }
+                })}/>
+                <span>{errors?.newPostText && <p className={s.errors}>{errors.newPostText?.message} </p>}</span>
+                <input type="submit" value="Send"></input>
+                {postsElements}
+            </form>
         </div>
 
     )

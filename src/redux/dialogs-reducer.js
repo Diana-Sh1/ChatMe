@@ -35,7 +35,6 @@ const dialogsReducer = (state = initialState, action) => {
             let body = action.newMessageBody;
             return {
                 ...state,
-
                 messages: [...state.messages, {id: 6, message: body, person: 'Grigoriy', src: 'logo_dialog.png'}]
             };
         default:

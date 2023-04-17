@@ -32,7 +32,7 @@
 }
 .loginForm {
     flex: 1 1 50%;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
 }
 
 .picture {
@@ -84,6 +84,13 @@
     color: #ff4d4d;
     font-size: 0.7rem;
 }
-.input {
-    /*border: 1px solid #ff4d4d;*/
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.checkbox input{
+    box-shadow: none;
+    margin-right: 5px;
 }

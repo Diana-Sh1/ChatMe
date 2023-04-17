@@ -53,11 +53,12 @@ const Login = (props) => {
                                     })} style={{border: errors.password ? '1px solid red' : ''}}/>
                                 </label>
                                 <span className={s.errors}>
-                {errors?.password && <p className={s.p}>{errors.password?.message} </p>}
-            </span>
+                                        {errors?.password && <p className={s.p}>{errors.password?.message} </p>}
+                                  </span>
                             </div>
-
-
+                            <div className={s.checkbox}>
+                                <input {...register('checkbox',)} type="checkbox" /><p>remember me</p>
+                            </div>
                             <div>
                                 <input type="submit" disabled={!isValid} className={s.button} value="Send"
                                        style={{color: isValid ? '#6F3B22' : ''}}/>
