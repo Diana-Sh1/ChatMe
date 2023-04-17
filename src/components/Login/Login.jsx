@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form";
 import s from "./Login.module.css"
 import loginPic from "../../assets/persons2.png"
 import logPic from "../../assets/loginPic.png"
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
 
 
 const Login = (props) => {
@@ -10,7 +12,7 @@ const Login = (props) => {
         mode: "onBlur"
     });
     const onSubmit = (data) => {
-        alert(JSON.stringify(data));
+        props.login(data.email, data.password, data.rememberMe);
         reset();
     }
     return <div className={s.content}>
@@ -22,25 +24,25 @@ const Login = (props) => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <label>
                                 <p>First name:</p>
-                                <input {...register('name', {
+                                <input {...register('email', {
                                     required: "Required field",
                                     minLength: {
                                         value: 3,
                                         message: "Min length 3 symbols"
                                     },
                                     maxLength: {
-                                        value: 20,
-                                        message: "Max length 20 symbols"
+                                        value: 40,
+                                        message: "Max length 40 symbols"
                                     },
                                     pattern: {
                                         value: /^\S*$/,
                                         message: "No whitespaces"
                                     }
-                                })} style={{border: errors.name ? '1px solid red' : ''}}/>
+                                })} style={{border: errors.email ? '1px solid red' : ''}}/>
                             </label>
                             <span>
-                     {errors?.name && <p className={s.errors}>{errors.name?.message} </p>}
-                 </span>
+                            {errors?.email && <p className={s.errors}>{errors.email?.message} </p>}
+                             </span>
                             <div>
                                 <label>
                                     <p>Password:</p>
@@ -93,4 +95,4 @@ const Login = (props) => {
 // }
 
 
-export default Login;
+export default connect (null, {login}) (Login);
