@@ -5,6 +5,7 @@ import loginPic from "../../assets/persons2.png"
 import logPic from "../../assets/loginPic.png"
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
+import {Navigate} from "react-router-dom";
 
 
 const Login = (props) => {
@@ -14,6 +15,9 @@ const Login = (props) => {
     const onSubmit = (data) => {
         props.login(data.email, data.password, data.rememberMe);
         reset();
+    }
+    if (props.isAuth) {
+        return <Navigate to={"/profile"}/>
     }
     return <div className={s.content}>
         <div className={s.inner}>
@@ -94,5 +98,7 @@ const Login = (props) => {
 //
 // }
 
-
-export default connect (null, {login}) (Login);
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+export default connect (mapStateToProps, {login}) (Login);

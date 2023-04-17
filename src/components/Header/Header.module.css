@@ -20,10 +20,14 @@
 
 }
 .login {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+.login a{
     letter-spacing: -1px;
     color: #6F3B22;
-    text-align: center;
-    width: 100%;
 }
 .login_block {
     height: 100%;
@@ -34,16 +38,35 @@
     cursor: pointer;
 }
 .login_img {
-
     width: 100%;
     height: 50px;
     position: relative;
     border: 1px dashed #AFA391;
     border-radius: 20px;
     background-color: #fff;
-    display: flex;
+    /*display: flex;*/
     align-items: center;
+
 }
+
+.login_img span {
+    position: absolute;
+    font-size: 0.7rem;
+    top: 47px;
+    background-color: #fff;
+    display: none;
+    height: 30px;
+    width: 100%;
+    padding: 5px 5px;
+    text-align: center;
+    color: #ff4d4d;
+
+}
+.login_img:hover .logout{
+    display: block;
+}
+
+
 .login_img img {
     position: absolute;
     left: 0;
