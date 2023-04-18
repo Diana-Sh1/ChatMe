@@ -6,6 +6,8 @@ import logPic from "../../assets/loginPic.png"
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
+import {errorMessage} from "../../redux/auth-reducer";
+
 
 
 const Login = (props) => {
@@ -69,6 +71,7 @@ const Login = (props) => {
                                 <input type="submit" disabled={!isValid} className={s.button} value="Send"
                                        style={{color: isValid ? '#6F3B22' : ''}}/>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -99,6 +102,8 @@ const Login = (props) => {
 // }
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    messages: state.auth.messages
+
 })
-export default connect (mapStateToProps, {login}) (Login);
+export default connect (mapStateToProps, {login, errorMessage}) (Login);
