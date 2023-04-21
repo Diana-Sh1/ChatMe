@@ -2,8 +2,8 @@ import React from "react";
 import s from "./Users.module.css"
 import {NavLink} from "react-router-dom";
 import userDefaultPic from '../../assets/user_default.png'
-import {usersAPI} from "../../api/api";
-import {toggleFollowingProgress} from "../../redux/users-reducer";
+
+
 
 
 let Users = (props) => {

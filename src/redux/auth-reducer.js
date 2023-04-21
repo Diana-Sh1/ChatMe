@@ -51,7 +51,7 @@ export const login = (email, password, rememberMe) => (dispatch) => {
                     dispatch(getAuthUserData())
                 } else {
                     let messages = data.messages.length > 0 ? data.messages[0] : "some error";
-                    dispatch(errorMessage(messages))
+                    // dispatch(errorMessage(messages))
                     console.log(messages)
                 }
             });

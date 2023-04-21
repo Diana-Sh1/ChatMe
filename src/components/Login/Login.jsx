@@ -16,6 +16,7 @@ const Login = (props) => {
     });
     const onSubmit = (data) => {
         props.login(data.email, data.password, data.rememberMe);
+
         reset();
     }
     if (props.isAuth) {
@@ -103,7 +104,7 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    messages: state.auth.messages
+
 
 })
 export default connect (mapStateToProps, {login, errorMessage}) (Login);

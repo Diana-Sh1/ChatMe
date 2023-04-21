@@ -1,5 +1,5 @@
 import Dialogs from "./Dialogs";
-import {sendMessageCreator} from "../../redux/dialogs-reducer";
+import {sendMessage} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import React from "react";
@@ -12,15 +12,8 @@ let mapStateToProps = (state) => {
         dialogsPage: state.dialogsPage,
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        sendMessage: (newMessageBody) => {
-            dispatch(sendMessageCreator(newMessageBody));
-        }
-    }
-}
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    withAuthRedirect
-)(Dialogs)
+    connect(mapStateToProps,
+        {sendMessage}),
+    withAuthRedirect)(Dialogs)
