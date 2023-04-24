@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getStatus, getUserProfile, updateStatus} from "../../redux/profile-reducer";
-import {Navigate, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 
 import {compose} from "redux";
 
@@ -14,9 +14,16 @@ export function withRouter(Children){
 }
 class ProfileContainer extends React.Component {
     componentDidMount() {
+
         let userId = this.props.match.params.userId;
         if (!userId) userId = 28586;
-        // if (!userId) userId = this.props.authorizedUserId;
+        // if (!userId) {
+
+            // userId = this.props.authorizedUserId;
+        //     // if (!userId) {
+        //     //     this.props.history.push("/login");
+        //     // }
+        // }
 
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
