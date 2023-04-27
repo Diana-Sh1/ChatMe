@@ -4,6 +4,7 @@ import yes from "../../../assets/yes_pic.png"
 import no from "../../../assets/no_pic.png"
 import userDefaultPic from "../../../assets/user_default2.png";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 const ProfileInfo = (props) => {
@@ -25,7 +26,7 @@ const ProfileInfo = (props) => {
                     <span className={s.title}>Looking for a job: {props.profile.lookingForAJob ?
                         <img className={s.job_img} src={yes}></img> : <img className={s.job_img} src={no}></img>}
                     </span>
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </div>
             </div>
         </div>
