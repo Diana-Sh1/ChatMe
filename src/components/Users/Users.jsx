@@ -3,34 +3,19 @@ import s from "./Users.module.css"
 import {NavLink} from "react-router-dom";
 import userDefaultPic from '../../assets/user_default.png'
 
+import isDivisibleBy from "validator/es/lib/isDivisibleBy";
+import Paginator from "../common/Paginator/Paginator";
 
-let Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
-    }
-    let slicedPages;
-    let curPage = props.currentPage;
+let Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, ...props}) => {
 
-    if (curPage - 3 < 0) {
-        slicedPages = pages.slice(0, 5);
-    } else {
-        slicedPages = pages.slice(curPage - 3, curPage + 2);
-    }
     return <div className={s.content}>
         <h2 className={s.title}>List of Users</h2>
         <div className={s.pagination}>
 
-            {slicedPages.map(p => {
-                return <span onClick={() => {
-                    props.onPageChanged(p)
-                }}
-                             className={props.currentPage === p ? s.selectedPage : ''}>{p}</span>
-            })}
+            <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalUsersCount={totalUsersCount}
+                       pageSize={pageSize}/>
         </div>
-
         {
             props.users.map(u =>
                 <div className={s.inner}>
@@ -59,7 +44,7 @@ let Users = (props) => {
                 </div>)
         }
     </div>
-
 }
+
 
 export default Users;
