@@ -7,26 +7,26 @@ import ProfileStatus from "./ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
-const ProfileInfo = (props) => {
-    if (!props.profile) return <Preloader/>
+const ProfileInfo = ({profile, status,updateStatus }) => {
+    if (!profile) return <Preloader/>
     return (
         <div className={s.content}>
             <div className={s.image}>
                 <img
-                    src={props.profile.photos.large != null ? props.profile.photos.large : userDefaultPic}></img>
+                    src={profile.photos.large != null ? profile.photos.large : userDefaultPic}></img>
             </div>
             <div className={s.card}>
-                <h2>{props.profile.fullName}</h2>
+                <h2>{profile.fullName}</h2>
                 <div className={s.inner}>
                     <span className={s.title}>Web Site:</span>
-                    <span>{props.profile.contacts.website}</span>
+                    <span>{profile.contacts.website}</span>
                     <span className={s.title}>Contacts:</span>
-                    <span>{props.profile.contacts.github}</span>
-                    <span>{props.profile.contacts.facebook}</span>
-                    <span className={s.title}>Looking for a job: {props.profile.lookingForAJob ?
+                    <span>{profile.contacts.github}</span>
+                    <span>{profile.contacts.facebook}</span>
+                    <span className={s.title}>Looking for a job: {profile.lookingForAJob ?
                         <img className={s.job_img} src={yes}></img> : <img className={s.job_img} src={no}></img>}
                     </span>
-                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                    <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                 </div>
             </div>
         </div>
