@@ -1,18 +1,20 @@
 import './App.css';
+import React from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
+// import DialogsContainer from "./components/Dialogs/DialogsContainer";
+// import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
-import {Component} from "react";
+import {Component, Suspense} from "react";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
-
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends Component {
     componentDidMount() {
@@ -28,8 +30,8 @@ class App extends Component {
                 <div className='app-wrapper'>
                     <HeaderContainer/>
                     <Navbar/>
-
                     <div className='app-wrapper-content'>
+                        <Suspense fallback={<div><Preloader/></div>}>
                         <Routes>
                             <Route path="/SOCHATTY" element={<SoChatty/>}/>
                             <Route path="/profile" element={<ProfileContainer/>}>
@@ -40,12 +42,11 @@ class App extends Component {
                             <Route path="/users" element={<UsersContainer/>}/>
                             <Route path="/login" element={<LoginPage/>}/>
                         </Routes>
-
+                        </Suspense>
                     </div>
                 </div>
             </BrowserRouter>
         );
-
     }
 }
 
