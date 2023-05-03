@@ -1,7 +1,8 @@
 import React from "react";
 import s from "./Paginator.module.css"
+import {useState} from "react";
 
-let Paginator = ({currentPage, onPageChanged, totalItemsCount, pageSize}) => {
+let Paginator = ({currentPage, onPageChanged, totalItemsCount, pageSize, portionSize = 8}) => {
 
     let pagesCount = Math.ceil(totalItemsCount / pageSize);
 
@@ -9,22 +10,31 @@ let Paginator = ({currentPage, onPageChanged, totalItemsCount, pageSize}) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    let slicedPages;
-    let curPage = currentPage;
 
-    if (curPage - 3 < 0) {
-        slicedPages = pages.slice(0, 5);
-    } else {
-        slicedPages = pages.slice(curPage - 3, curPage + 2);
-    }
+    let portionCount = Math.ceil(pagesCount / portionSize);
+    let [portionNumber, setPortionNumber] = useState(1)
+    let leftPortionNumber = (portionNumber - 1) * portionSize + 1;
+    let rightPortionNumber = portionNumber * portionSize;
+
 
     return <>
-        {slicedPages.map(p => {
+        {portionNumber > 1 &&
+            <button onClick={()=> {setPortionNumber(portionNumber - 1 )}}>&#8592;</button>}
+
+        {pages
+            .filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
+            .map(p => {
             return <span key={p.id} onClick={() => {
                 onPageChanged(p)
             }}
                          className={currentPage === p ? s.selectedPage : ''}>{p}</span>
         })}
+        { portionCount > portionNumber &&
+            <button onClick={()=> {setPortionNumber (portionNumber + 1)}}>&#8594;</button>
+
+        }
+
+
     </>
 
 }
