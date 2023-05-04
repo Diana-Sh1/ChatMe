@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://diana-sh1.github.io/ChatMe/",
+  "homepage": "https://Diana-Sh1.github.io/ChatMe/",
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^3.0.1",

@@ -1,9 +1,9 @@
 import s from "./SoChatty.module.css"
-import Navbar from "../Navbar/Navbar";
+import titleImg from "../../assets/image_bg.svg"
 const SoChatty = () => {
     return (
         <div className={s.content}>
-            <img className={s.img} src="image_bg.svg" alt=""/>
+            <img className={s.img} src={titleImg} alt=""/>
 
         </div>
     )

@@ -1,5 +1,4 @@
 import axios from "axios";
-import {requestUsers} from "../redux/users-reducer";
 
 
 const instance = axios.create({

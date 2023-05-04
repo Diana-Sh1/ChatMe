@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, HashRouter} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
@@ -17,6 +17,7 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends Component {
+
     componentDidMount() {
         this.props.initializeApp();
     }
@@ -26,7 +27,7 @@ class App extends Component {
             return <Preloader/>
         }
         return (
-            <BrowserRouter>
+            <HashRouter >
                 <div className='app-wrapper'>
                     <HeaderContainer/>
                     <Navbar/>
@@ -45,7 +46,7 @@ class App extends Component {
                         </Suspense>
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }

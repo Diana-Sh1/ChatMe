@@ -1,6 +1,4 @@
-import {profileAPI, usersAPI} from "../api/api";
-import {useParams} from "react-router-dom";
-import React from "react";
+import {profileAPI} from "../api/api";
 
 
 const ADD_POST = 'ADD-POST';

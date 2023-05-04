@@ -1,6 +1,4 @@
-import {authAPI, usersAPI} from "../api/api";
-import {Navigate} from "react-router-dom";
-import React from "react";
+import {authAPI} from "../api/api";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const ERRORS = 'ERRORS'
