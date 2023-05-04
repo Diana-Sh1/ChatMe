@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ChatMe/static/css/main.a29e1ea1.css",
-    "main.js": "/ChatMe/static/js/main.6bb8bc3b.js",
+    "main.js": "/ChatMe/static/js/main.7ebb671a.js",
     "static/css/884.a8940af7.chunk.css": "/ChatMe/static/css/884.a8940af7.chunk.css",
     "static/js/884.4ecc7a44.chunk.js": "/ChatMe/static/js/884.4ecc7a44.chunk.js",
     "static/css/341.c77636e4.chunk.css": "/ChatMe/static/css/341.c77636e4.chunk.css",
@@ -21,7 +21,7 @@
     "index.html": "/ChatMe/index.html",
     "static/media/preloader.svg": "/ChatMe/static/media/preloader.cfc625a702c09d6507b2c2ea9d54a963.svg",
     "main.a29e1ea1.css.map": "/ChatMe/static/css/main.a29e1ea1.css.map",
-    "main.6bb8bc3b.js.map": "/ChatMe/static/js/main.6bb8bc3b.js.map",
+    "main.7ebb671a.js.map": "/ChatMe/static/js/main.7ebb671a.js.map",
     "884.a8940af7.chunk.css.map": "/ChatMe/static/css/884.a8940af7.chunk.css.map",
     "884.4ecc7a44.chunk.js.map": "/ChatMe/static/js/884.4ecc7a44.chunk.js.map",
     "341.c77636e4.chunk.css.map": "/ChatMe/static/css/341.c77636e4.chunk.css.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.a29e1ea1.css",
-    "static/js/main.6bb8bc3b.js"
+    "static/js/main.7ebb671a.js"
   ]
 }
