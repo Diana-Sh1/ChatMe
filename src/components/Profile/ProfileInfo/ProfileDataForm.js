@@ -1,31 +1,42 @@
 import s from "./ProfileInfo.module.css";
-import yes from "../../../assets/yes_pic.png";
-import no from "../../../assets/no_pic.png";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import {useForm} from "react-hook-form";
+import React from "react";
 
-const ProfileDataForm = ({profile}) => {
-    const {register, formState: {errors, isValid}, handleSubmit, reset} = useForm({
+
+
+const ProfileDataForm = ({onSubmit, profile, messages}) => {
+    const {register, formState: {errors}, handleSubmit} = useForm({
+        defaultValues: profile,
         mode: "onBlur"
     });
 
-    return <div className={s.card}>
-        {isOwner && <button onClick={goToEditMode}>Edit profile</button>}
-        <h2>{profile.fullName}</h2>
-        <div className={s.inner}>
-            <span className={s.title}>Contacts:</span>{Object.keys(profile.contacts).map(key => {
-            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
-        })}
-            <span className={s.title}>
-                        Looking for a job: {profile.lookingForAJob ?
-                <img alt='' className={s.job_img} src={yes}></img> :
-                <img alt='' className={s.job_img} src={no}></img>}
-                    </span>
-            <span>{isOwner && <input type={"file"} onChange={onMainPhotoSelected}/>}</span>
+    return <>
+    <form className={s.card} onSubmit={handleSubmit(onSubmit)}>
 
-            <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
-        </div>
-    </div>
+            <div>Full name: <input {...register('fullName')}/></div>
+            <div>Contacts:</div>
+            {Object.keys(profile.contacts).map(key => {
+                return <div>
+                    <b>{key}: <input {...register("contacts." + key)}/> </b>
+                </div>
+            })}
+            <div>
+                <span>Looking for a job:</span>
+                <input {...register("lookingForAJob")} type="checkbox"/><span>Yes</span>
+                <p>My skills:</p>
+                <textarea {...register("lookingForAJobDescription", {maxLength: {value: 100, message: "Max length 100 symbols"},})}/>
+                {errors?.lookingForAJobDescription && <p className={s.errors}>{errors.lookingForAJobDescription?.message}</p>}
+            </div>
+            <div><p>About me:</p>
+                <textarea {...register("aboutMe", {maxLength: {value: 100, message: "Max length 100 symbols"},})} />
+                {errors?.aboutMe && <p className={s.errors}>{errors.aboutMe?.message}</p>}
+            </div>
+        <div className={s.errors}>{messages}</div>
 
+        <input type='submit' value='Save'></input>
+
+    </form>
+    <button onClick={()=>{}}>Cancel</button>
+    </>
 }
 export default ProfileDataForm;

@@ -1,4 +1,5 @@
 import {profileAPI} from "../api/api";
+import {getErrorsMessage} from "./auth-reducer";
 
 
 const ADD_POST = 'ADD-POST';
@@ -69,7 +70,6 @@ export const savePhotoSuccess = (photo) => ({type: SAVE_PHOTO_SUCCESS, photo})
 export const getUserProfile = (userId) => async (dispatch) => {
     const data = await profileAPI.getProfile(userId)
     dispatch(setUserProfile(data));
-
 }
 
 export const getStatus = (userId) => async (dispatch) => {
@@ -86,7 +86,18 @@ export const updateStatus = (status) => async (dispatch) => {
 export const savePhoto = (file) => async (dispatch) => {
     const data = await profileAPI.savePhoto(file)
     if (data.resultCode === 0) {
-        dispatch(savePhotoSuccess(data.data.photos));
+
+    }
+}
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.id
+    let data = await profileAPI.saveProfile(profile);
+    if (data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
+    } else {
+        let messages = data.messages[0]
+        dispatch(getErrorsMessage(messages))
+        return Promise.reject(messages)
     }
 }
 export default profileReducer;

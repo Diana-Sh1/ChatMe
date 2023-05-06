@@ -7,7 +7,7 @@ import {useForm} from "react-hook-form";
 
 const MyPosts = (props) => {
 
-    let postsElements = props.posts.map(p => <Post message={p.message}/>)
+    let postsElements = props.posts.map(p => <Post key={p.id} message={p.message}/>)
     const onSubmit = (data) => {
         props.addPost(data.newPostText);
         reset();
