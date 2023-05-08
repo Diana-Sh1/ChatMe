@@ -1,40 +1,52 @@
+.inner {
+
+}
 .content {
-    display: flex;
     width: 100%;
-    margin: 30px 0 30px 0;
-    gap: 40px;
+
 }
 
 .image {
-    flex: 1 1 25%;
-    border: 2px solid #6F3B22;
-    border-radius: 20px;
+    border: 2px solid #fff;
+    background-color: #fff;
+    border-radius: 50%;
     padding: 5px;
     position: relative;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+
+.image_content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 10px 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background: linear-gradient(to bottom, #EAA96D 50%, white 50%);
+
 }
 .image img {
     max-width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 20px;
+    border-radius: 50%;
 
 }
 .card {
-    flex: 1 1 75%;
     color: #6F3B22;
-
+    background-color: #fff;
 }
 .card h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-
+    text-align: center;
 }
 .inner {
     display: flex;
     flex-direction: column;
-
-
 }
 .input_block {
     line-height: 2rem;
@@ -54,9 +66,7 @@
     font-size: 1.5rem;
     line-height: 2rem;
 }
-.title {
-    /*font-weight: 700;*/
-}
+
 .title span {
     font-size: 1rem;
     vertical-align: middle;
@@ -78,26 +88,47 @@ textarea {
     color: #ff4d4d;
     font-size: 0.7rem;
 }
-.hidden {
-    display: none;
+.edit_buttons {
+    display: flex;
+    padding-left: 150px;
+    justify-content: center;
 }
 .visible {
-    position: absolute;
-    left: 50%;
-    top: 3%;
     color: transparent;
 }
+
 .visible::-webkit-file-upload-button {
     visibility: hidden;
 }
 .visible::before {
-    content: 'Add image';
-    color: #6F3B22;
+    content: 'Change Photo';
     display: inline-block;
+    cursor: pointer;
+    background: rgba(255,255,255,50%);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 5px 8px;
+    color: rgba(0,0,0, 60%);
+    border-radius: 5px;
+    border: 1px dashed gray;
+}
+.visible:hover:before {
+    background: rgba(255,255,255,1 );
+}
+.edit_profile {
+    color: rgba(0,0,0, 60%);
     border-radius: 5px;
     padding: 5px 8px;
     cursor: pointer;
-    background: rgba(255,255,255,40%);
+    background: rgba(255,255,255,50%);
     font-weight: 700;
     font-size: 15px;
+    margin: 0 auto;
+    border: 1px dashed gray;
+}
+.edit_profile:hover {
+    background: rgba(255,255,255,1 );
+}
+.btn_profile {
+    padding-right: 20px;
 }
