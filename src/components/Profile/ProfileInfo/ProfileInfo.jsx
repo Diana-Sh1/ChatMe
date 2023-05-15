@@ -13,11 +13,12 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
     let [editMode, setEditMode] = useState(false);
 
     const Contact = ({contactTitle, contactValue}) => {
-        return <div>{contactTitle} - <a href={contactValue}>{contactValue}</a></div>
+        return <div className={s.description}>{contactTitle} - <a href={contactValue}>{contactValue}</a></div>
     }
     const ProfileData = ({profile, isOwner, goToEditMode}) => {
         return <div className={s.card}>
             <h2>{profile.fullName}</h2>
+            <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             <div className={s.edit_buttons}>
                 <div className={s.btn_profile}>{isOwner &&
                     <button onClick={goToEditMode} className={s.edit_profile}>Edit profile</button>}</div>
@@ -27,23 +28,29 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                 </div>
             </div>
             <div className={s.inner}>
-                <span className={s.title}>Contacts:</span>
-                {Object.keys(profile.contacts).map(key => {
-                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
-                })}
-                <span className={s.title}>
-                        Looking for a job: {profile.lookingForAJob ?
+                <div className={s.title_h2}>
+                    Looking for a job: {profile.lookingForAJob ?
                     <img alt='' className={s.job_img} src={yes}></img> :
                     <img alt='' className={s.job_img} src={no}></img>}
-                     </span>
-                <div className={s.title}>My skills:
-                    <span>{profile.lookingForAJobDescription}</span>
                 </div>
+                <div className={s.inner_wrapper}>
 
-                <div className={s.title}>About me:
-                    <span>{profile.aboutMe}</span>
+                    <div className={s.label}>
+                        <span className={s.title}>My skills</span>
+                        <div className={s.description}>{profile.lookingForAJobDescription}</div>
+                    </div>
+                    <div className={s.label}>
+                        <span className={s.title}>About me</span>
+                        <div className={s.description}>{profile.aboutMe}</div>
+                    </div>
+                    <div className={s.label}>
+                        <span className={s.title}>Contacts</span>
+                    {Object.keys(profile.contacts).map(key => {
+                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                    })}
+                    </div>
+
                 </div>
-                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
         </div>
     }

@@ -18,9 +18,10 @@ const MyPosts = (props) => {
 
     return (
         <div className={s.content}>
+
             <h2 className={s.h2}>My Posts</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register('newPostText', {
+                <textarea {...register('newPostText', {
                     required: "Required field",
                     maxLength: {
                         value: 300,
@@ -31,12 +32,13 @@ const MyPosts = (props) => {
                         value: /^(?! )/,
                         message: "No whitespaces at the start of the line"
                     }
-                })}/>
+                })} className={s.textarea}/>
                 <span>{errors?.newPostText && <p className={s.errors}>{errors.newPostText?.message} </p>}</span>
-                <input type="submit" value="Send"></input>
+                <input type="submit" value="Send" className={s.btn}></input>
                 {postsElements}
             </form>
-        </div>
+            </div>
+
 
     )
 }

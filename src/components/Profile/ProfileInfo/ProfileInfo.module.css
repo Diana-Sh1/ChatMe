@@ -1,5 +1,5 @@
 .inner {
-
+    padding: 0 30px 30px 30px;
 }
 .content {
     width: 100%;
@@ -36,40 +36,82 @@
 
 }
 .card {
-    color: #6F3B22;
+    /*color: #6F3B22;*/
     background-color: #fff;
+
 }
 .card h2 {
     font-size: 2rem;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
     text-align: center;
 }
 .inner {
     display: flex;
     flex-direction: column;
+    background: linear-gradient(0deg, rgba(250,242,217,1) 0%, rgba(255,255,255,1) 100%);
+    /*background-color: #FAF2D9;*/
+
+}
+
+.inner_wrapper {
+    /*border: 1px solid lightgray;*/
+     /*padding: 20px;*/
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 100%));
+
+    gap: 30px;
+
+}
+.inner_wrapper div {
+    padding: 0 10px 10px 10px;
 }
 .input_block {
-    line-height: 2rem;
+    /*line-height: 1.5rem;*/
     cursor: pointer;
     border-radius: 5px;
-    padding: 0 10px;
-    max-width: 700px;
+    padding: 0 10px ;
+    max-width: 500px;
+    color: darkblue;
+    margin: 0 auto 10px auto;
+    text-align: center;
 }
 .input_block:hover {
     background-color: rgba(255,255,255,0.4);
 }
-.status {
-    margin: 5px 0;
-    padding: 0 5px;
+.title_h2 {
+   text-align: center;
+    padding-bottom: 10px;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.label {
+    /*font-size: 1.5rem;*/
+    /*line-height: 2rem;*/
+    border: 1px solid rgba(0,0,0, 0.2);
+    border-radius: 15px;
+
+
 }
 .title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: block;
+    text-align: center;
     line-height: 2rem;
+    border-bottom: 1px solid lightgray;
 }
+.description {
 
-.title span {
-    font-size: 1rem;
-    vertical-align: middle;
+    line-height: 2rem;
+    max-height: 100%;
+
+}
+.status {
+    font-size: 1.5rem;
+}
+.edit_status {
+    line-height: 2rem;
 }
 .job_img {
     width: 25px;
@@ -77,7 +119,11 @@
 .input {
     font-size: 1.5rem;
     line-height: 2rem;
-    width: 100%;
+    padding: 0 10px;
+    width: 70%;
+    border-radius: 20px;
+    color: darkblue;
+    background-color: rgba(0,0,0,10%);
 }
 textarea {
     resize: none;
@@ -92,6 +138,7 @@ textarea {
     display: flex;
     padding-left: 150px;
     justify-content: center;
+    padding-bottom: 20px;
 }
 .visible {
     color: transparent;
@@ -109,15 +156,16 @@ textarea {
     font-size: 15px;
     padding: 5px 8px;
     color: rgba(0,0,0, 60%);
-    border-radius: 5px;
+    border-radius: 20px;
     border: 1px dashed gray;
 }
 .visible:hover:before {
-    background: rgba(255,255,255,1 );
+    color: #000;
+    background-color: #FAF2D9;
 }
 .edit_profile {
     color: rgba(0,0,0, 60%);
-    border-radius: 5px;
+    border-radius: 20px;
     padding: 5px 8px;
     cursor: pointer;
     background: rgba(255,255,255,50%);
@@ -127,7 +175,8 @@ textarea {
     border: 1px dashed gray;
 }
 .edit_profile:hover {
-    background: rgba(255,255,255,1 );
+    color: #000;
+    background-color: #FAF2D9;
 }
 .btn_profile {
     padding-right: 20px;

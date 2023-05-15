@@ -14,7 +14,7 @@ const Profile = (props) => {
                 <ProfileInfo profile={props.profile} status={props.status}
                              updateStatus={props.updateStatus} isOwner={props.isOwner}
                              savePhoto={props.savePhoto} saveProfile={props.saveProfile} messages={props.messages} />
-                <span className={s.line}></span>
+                {/*<span className={s.line}></span>*/}
                 <MyPostsContainer/>
             </div>
         </div>
