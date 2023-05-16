@@ -13,7 +13,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
     let [editMode, setEditMode] = useState(false);
 
     const Contact = ({contactTitle, contactValue}) => {
-        return <div className={s.description}>{contactTitle} - <a href={contactValue}>{contactValue}</a></div>
+        return <div>{contactTitle} - <a href={contactValue}>{contactValue}</a></div>
     }
     const ProfileData = ({profile, isOwner, goToEditMode}) => {
         return <div className={s.card}>
@@ -45,9 +45,10 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                     </div>
                     <div className={s.label}>
                         <span className={s.title}>Contacts</span>
-                    {Object.keys(profile.contacts).map(key => {
-                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
-                    })}
+                        <div className={s.descr_contact}> {Object.keys(profile.contacts).map(key => {
+                            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                        })}
+                        </div>
                     </div>
 
                 </div>

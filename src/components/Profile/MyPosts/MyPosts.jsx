@@ -34,7 +34,7 @@ const MyPosts = (props) => {
                     }
                 })} className={s.textarea}/>
                 <span>{errors?.newPostText && <p className={s.errors}>{errors.newPostText?.message} </p>}</span>
-                <input type="submit" value="Send" className={s.btn}></input>
+                <div className={s.btn_wrapper}><input type="submit" value="Send" className={s.btn}></input></div>
                 {postsElements}
             </form>
             </div>

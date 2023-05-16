@@ -3,7 +3,6 @@
 }
 .content {
     width: 100%;
-
 }
 
 .image {
@@ -40,9 +39,11 @@
     background-color: #fff;
 
 }
+.title_job {
+    padding-right: 10px;
+}
 .card h2 {
     font-size: 2rem;
-    /*margin-bottom: 10px;*/
     text-align: center;
 }
 .inner {
@@ -52,19 +53,19 @@
     /*background-color: #FAF2D9;*/
 
 }
-
+.title_h2 input {
+    transform: scale(1.2);
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -o-appearance:none;
+}
 .inner_wrapper {
-    /*border: 1px solid lightgray;*/
-     /*padding: 20px;*/
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, 100%));
-
     gap: 30px;
+    margin-bottom: 15px;
+}
 
-}
-.inner_wrapper div {
-    padding: 0 10px 10px 10px;
-}
 .input_block {
     /*line-height: 1.5rem;*/
     cursor: pointer;
@@ -86,12 +87,15 @@
     font-weight: 700;
 }
 .label {
-    /*font-size: 1.5rem;*/
-    /*line-height: 2rem;*/
     border: 1px solid rgba(0,0,0, 0.2);
     border-radius: 15px;
-
-
+    padding: 0 10px 10px 10px;
+    height: 100%;
+    position: relative;
+}
+.errors_label {
+    padding-top: 10px;
+    text-align: center;
 }
 .title {
     font-size: 1.2rem;
@@ -102,10 +106,8 @@
     border-bottom: 1px solid lightgray;
 }
 .description {
-
     line-height: 2rem;
-    max-height: 100%;
-
+    height: 100%;
 }
 .status {
     font-size: 1.5rem;
@@ -160,8 +162,8 @@ textarea {
     border: 1px dashed gray;
 }
 .visible:hover:before {
-    color: #000;
-    background-color: #FAF2D9;
+    color: #fff;
+    background-color: #EAA96D;
 }
 .edit_profile {
     color: rgba(0,0,0, 60%);
@@ -175,9 +177,63 @@ textarea {
     border: 1px dashed gray;
 }
 .edit_profile:hover {
-    color: #000;
-    background-color: #FAF2D9;
+    background-color: #EAA96D;
+    color: #fff;
 }
 .btn_profile {
     padding-right: 20px;
+}
+.name_red {
+    padding: 10px 0 15px 0;
+}
+.name_red input {
+    background-color: #fff;
+    border: 1px solid lightgray;
+    line-height: 1.5rem;
+    padding: 0 5px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+}
+.title_name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-right: 10px;
+}
+.description textarea {
+    width: 100%;
+    height: 87%;
+    font-size: 1.1rem;
+
+}
+.descr_contact {
+    line-height: 1.5rem;
+}
+.contact_block {
+    padding-bottom: 3px;
+}
+
+.input_contact {
+    width: 100%;
+    display: block;
+    line-height: 1.5rem;
+    border: 1px solid lightgray;
+    font-size: 1.1rem;
+
+}
+.submit {
+    padding: 8px 0;
+    font-size: 1.2rem;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: #fff;
+    /*border: 1px dashed lightgray;*/
+    letter-spacing: 2px;
+    cursor: pointer;
+    background-color: #EAA96D;
+    font-weight: 700;
+    transition: 0.2s ease-in;
+}
+.submit:hover {
+    background-color: #fff;
+    color: rgba(0,0,0,80%);
 }

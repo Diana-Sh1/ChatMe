@@ -3,7 +3,6 @@ import {useForm} from "react-hook-form";
 import React from "react";
 
 
-
 const ProfileDataForm = ({onSubmit, profile, messages}) => {
     const {register, formState: {errors}, handleSubmit} = useForm({
         defaultValues: profile,
@@ -11,32 +10,66 @@ const ProfileDataForm = ({onSubmit, profile, messages}) => {
     });
 
     return <>
-    <form className={s.card} onSubmit={handleSubmit(onSubmit)}>
-
-            <div>Full name: <input {...register('fullName')}/></div>
-            <div>Contacts:</div>
-            {Object.keys(profile.contacts).map(key => {
-                return <div>
-                    <b>{key}: <input {...register("contacts." + key)}/> </b>
+        <form className={s.card} onSubmit={handleSubmit(onSubmit)}>
+            <div className={s.inner}>
+                <div className={s.title_h2}><span className={s.title_job}>Looking for a job</span>
+                    <input {...register("lookingForAJob")} type="checkbox"/>
                 </div>
-            })}
-            <div>
-                <span>Looking for a job:</span>
-                <input {...register("lookingForAJob")} type="checkbox"/><span>Yes</span>
-                <p>My skills:</p>
-                <textarea {...register("lookingForAJobDescription", {maxLength: {value: 100, message: "Max length 100 symbols"},})}/>
-                {errors?.lookingForAJobDescription && <p className={s.errors}>{errors.lookingForAJobDescription?.message}</p>}
-            </div>
-            <div><p>About me:</p>
-                <textarea {...register("aboutMe", {maxLength: {value: 100, message: "Max length 100 symbols"},})} />
-                {errors?.aboutMe && <p className={s.errors}>{errors.aboutMe?.message}</p>}
-            </div>
-        <div className={s.errors}>{messages}</div>
+                <div className={s.name_red}><span className={s.title_name}>Full name:</span>
+                    <input {...register('fullName', {
+                        maxLength: {
+                            value: 30,
+                            message: "Max length 30 symbols"
+                        },
+                    })}/>
+                    <div>{errors?.fullName &&
+                        <p className={s.errors}>{errors.fullName?.message}</p>}
+                    </div>
+                </div>
 
-        <input type='submit' value='Save'></input>
+                <div className={s.inner_wrapper}>
+                    <div className={s.label}>
+                        <span className={s.title}>My skills</span>
+                        <div className={s.description}>
+                            <textarea {...register("lookingForAJobDescription", {
+                                maxLength: {
+                                    value: 100,
+                                    message: "Max length 100 symbols"
+                                },
+                            })}/>
+                           <div className={s.errors_label}>{errors?.lookingForAJobDescription &&
+                               <p className={s.errors}>{errors.lookingForAJobDescription?.message}</p>}
+                           </div>
+                        </div>
+                    </div>
+                    <div className={s.label}><span className={s.title}>About me</span>
+                        <div className={s.description}>
+                        <textarea {...register("aboutMe", {
+                            maxLength: {
+                                value: 100,
+                                message: "Max length 100 symbols"
+                            },
+                        })} />
+                           <div className={s.errors_label}>
+                               {errors?.aboutMe && <p className={s.errors}>{errors.aboutMe?.message}</p>}
+                           </div>
+                        </div>
+                    </div>
+                    <div className={s.label}><span className={s.title}>Contacts</span>
+                        {Object.keys(profile.contacts).map(key => {
+                            return <div className={s.contact_block}>
+                                <b>{key}: <input {...register("contacts." + key)} className={s.input_contact}/> </b>
+                            </div>
+                        })}
 
-    </form>
-    <button onClick={()=>{}}>Cancel</button>
+                    </div>
+                </div>
+                <div className={s.errors}>{messages}</div>
+                <input type='submit' value='Save' className={s.submit}></input>
+            </div>
+        </form>
+        <button onClick={() => {}}>Cancel</button>
+
     </>
 }
 export default ProfileDataForm;
