@@ -1,7 +1,19 @@
-.button {
-    display: inline-block;
-    /*padding: 7px 35px;*/
-    font-size: 1.3rem;
-
+.btn {
+    width: 100px;
+    background-color: #EAA96D;
+    padding: 4px 5px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 1px dashed transparent;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transition: 0.2s ease-in;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+.btn:hover {
+    background-color: #fff;
+    color: rgba(0,0,0,80%);
 
 }

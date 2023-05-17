@@ -5,6 +5,7 @@ import React from 'react'
 import {useForm} from "react-hook-form";
 
 
+
 const MyPosts = (props) => {
 
     let postsElements = props.posts.map(p => <Post key={p.id} message={p.message}/>)
@@ -34,7 +35,7 @@ const MyPosts = (props) => {
                     }
                 })} className={s.textarea}/>
                 <span>{errors?.newPostText && <p className={s.errors}>{errors.newPostText?.message} </p>}</span>
-                <div className={s.btn_wrapper}><input type="submit" value="Send" className={s.btn}></input></div>
+                <div className={s.btn_wrapper}><Button/></div>
                 {postsElements}
             </form>
             </div>

@@ -3,7 +3,8 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {useForm} from "react-hook-form";
 import React from "react";
-import arrowPic from "../../assets/arrow3.svg"
+import Button from "../Button/Button";
+
 
 
 const Dialogs = (props) => {
@@ -31,15 +32,15 @@ const Dialogs = (props) => {
 
                 </div>
                 <form className={s.enter_text} onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register('newMessageBody', {
+                    <textarea {...register('newMessageBody', {
                         required: "Required field",
                         maxLength: {
                             value: 300,
                             message: "Max length 300 symbols"
                         }
-                    })}/>
+                    })} className={s.textarea}/>
                     <span>{errors?.newMessageBody && <p className={s.errors}>{errors.newMessageBody?.message} </p>}</span>
-                    <input type="submit" value="Send"></input>
+                    <div className={s.btn_wrapper}><Button/></div>
                 </form>
             </div>
 

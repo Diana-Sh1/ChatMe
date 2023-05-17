@@ -13,7 +13,7 @@ const ProfileDataForm = ({onSubmit, profile, messages}) => {
         <form className={s.card} onSubmit={handleSubmit(onSubmit)}>
             <div className={s.inner}>
                 <div className={s.title_h2}><span className={s.title_job}>Looking for a job</span>
-                    <input {...register("lookingForAJob")} type="checkbox"/>
+                    <input {...register("lookingForAJob")} type="checkbox" className={s.checkbox}/>
                 </div>
                 <div className={s.name_red}><span className={s.title_name}>Full name:</span>
                     <input {...register('fullName', {
@@ -68,7 +68,7 @@ const ProfileDataForm = ({onSubmit, profile, messages}) => {
                 <input type='submit' value='Save' className={s.submit}></input>
             </div>
         </form>
-        <button onClick={() => {}}>Cancel</button>
+
 
     </>
 }

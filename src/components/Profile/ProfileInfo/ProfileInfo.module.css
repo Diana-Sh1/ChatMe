@@ -53,11 +53,25 @@
     /*background-color: #FAF2D9;*/
 
 }
-.title_h2 input {
-    transform: scale(1.2);
+.checkbox {
     -moz-appearance:none;
     -webkit-appearance:none;
-    -o-appearance:none;
+}
+.checkbox:before {
+    content: '\2714';
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    /*background: #E6763F;*/
+    width: 25px;
+    height: 26px;
+    display: block;
+    font-size: 1.3rem;
+    text-align: center;
+    color: transparent !important;
+}
+.checkbox:checked:before {
+    color: #E6763F !important;
+
 }
 .inner_wrapper {
     display: grid;
@@ -135,6 +149,8 @@ textarea {
 .errors {
     color: #ff4d4d;
     font-size: 0.7rem;
+    text-align: center;
+    padding-bottom: 5px;
 }
 .edit_buttons {
     display: flex;
@@ -218,7 +234,7 @@ textarea {
     line-height: 1.5rem;
     border: 1px solid lightgray;
     font-size: 1.1rem;
-
+    border-radius: 8px;
 }
 .submit {
     padding: 8px 0;

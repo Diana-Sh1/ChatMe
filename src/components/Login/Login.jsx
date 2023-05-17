@@ -8,15 +8,13 @@ import {login, getErrorsMessage} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
 
 
-
-
 const Login = (props) => {
     const {register, formState: {errors, isValid}, handleSubmit, reset} = useForm({
         mode: "onBlur"
     });
 
     const onSubmit = (data) => {
-        props.login(data.email, data.password, data.rememberMe);
+        props.login(data.email, data.password, data.rememberMe, data.captcha);
         reset();
     }
     if (props.isAuth) {
@@ -66,13 +64,20 @@ const Login = (props) => {
                                   </span>
                             </div>
                             <div className={s.checkbox}>
-                                <input {...register('checkbox',)} type="checkbox" /><p>remember me</p>
+                                <input {...register('checkbox',)} type="checkbox"/><p>remember me</p>
+                            </div>
+                            <div className={s.captcha_wrapper}>
+                                {props.captchaUrl && <img src={props.captchaUrl} className={s.captcha_img}/>}
+                                {props.captchaUrl && <input {...register('captcha', {required: "Required field"})} className={s.captcha_input}/>}
                             </div>
                             <div>
                                 <input type="submit" disabled={!isValid} className={s.button} value="Send"
                                        style={{color: isValid ? '#6F3B22' : ''}}/>
                             </div>
-                        <div className={s.errors}>{props.messages}</div>
+
+                            <div className={s.errors}>{props.messages}</div>
+
+
                         </form>
                     </div>
                 </div>
@@ -104,8 +109,9 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
-    messages: state.auth.messages
+    messages: state.auth.messages,
+    captchaUrl: state.auth.captchaUrl
 
 
 })
-export default connect (mapStateToProps, {login, getErrorsMessage}) (Login);
+export default connect(mapStateToProps, {login, getErrorsMessage})(Login);

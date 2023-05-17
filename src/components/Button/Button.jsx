@@ -1,9 +1,8 @@
 import s from "./Button.module.css"
+import React from "react";
 const Button = () => {
     return (
-
-            <button className={s.button} type="submit">Send<img src="arrow3.svg" alt=""/></button>
-
+        <input type="submit" value="Send" className={s.btn}></input>
     )
 }
 export default Button;

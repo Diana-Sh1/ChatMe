@@ -24,26 +24,7 @@
     display: flex;
     justify-content: end;
 }
-.btn {
-    width: 100px;
-    background-color: #EAA96D;
-    padding: 4px 5px;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border: 1px dashed transparent;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    transition: 0.2s ease-in;
-    letter-spacing: 2px;
-    font-weight: 700;
-}
-.btn:hover {
-    background-color: #fff;
-    /*box-shadow: 0 5px 0px rgba(0,0,0,20%);*/
-    color: rgba(0,0,0,80%);
 
-}
 .errors {
     color: #ff4d4d;
     font-size: 0.7rem;
