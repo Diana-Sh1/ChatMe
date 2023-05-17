@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/ChatMe/static/css/main.097e1e64.css",
-    "main.js": "/ChatMe/static/js/main.897c3942.js",
+    "main.js": "/ChatMe/static/js/main.1a52865f.js",
     "static/css/672.5f13fc80.chunk.css": "/ChatMe/static/css/672.5f13fc80.chunk.css",
     "static/js/672.4dfa53a9.chunk.js": "/ChatMe/static/js/672.4dfa53a9.chunk.js",
-    "static/css/341.c77636e4.chunk.css": "/ChatMe/static/css/341.c77636e4.chunk.css",
+    "static/css/341.56e7ad59.chunk.css": "/ChatMe/static/css/341.56e7ad59.chunk.css",
     "static/js/341.4a6cfdf0.chunk.js": "/ChatMe/static/js/341.4a6cfdf0.chunk.js",
     "static/media/image_bg.svg": "/ChatMe/static/media/image_bg.4b85def9d92b57ada73ab334d1a16633.svg",
     "static/media/persons2.png": "/ChatMe/static/media/persons2.acd37a9bfe5c134baced.png",
@@ -21,14 +21,14 @@
     "index.html": "/ChatMe/index.html",
     "static/media/preloader.svg": "/ChatMe/static/media/preloader.cfc625a702c09d6507b2c2ea9d54a963.svg",
     "main.097e1e64.css.map": "/ChatMe/static/css/main.097e1e64.css.map",
-    "main.897c3942.js.map": "/ChatMe/static/js/main.897c3942.js.map",
+    "main.1a52865f.js.map": "/ChatMe/static/js/main.1a52865f.js.map",
     "672.5f13fc80.chunk.css.map": "/ChatMe/static/css/672.5f13fc80.chunk.css.map",
     "672.4dfa53a9.chunk.js.map": "/ChatMe/static/js/672.4dfa53a9.chunk.js.map",
-    "341.c77636e4.chunk.css.map": "/ChatMe/static/css/341.c77636e4.chunk.css.map",
+    "341.56e7ad59.chunk.css.map": "/ChatMe/static/css/341.56e7ad59.chunk.css.map",
     "341.4a6cfdf0.chunk.js.map": "/ChatMe/static/js/341.4a6cfdf0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.097e1e64.css",
-    "static/js/main.897c3942.js"
+    "static/js/main.1a52865f.js"
   ]
 }
