@@ -36,8 +36,7 @@ const authReducer = (state = initialState, action) => {
     }
 }
 export const setAuthUserData = (id, email, login, isAuth) => ({
-    type: SET_USER_DATA,
-    payload: {id, email, login, isAuth}
+    type: SET_USER_DATA, payload: {id, email, login, isAuth}
 })
 export const getCaptchaUrlSuccess = (captchaUrl) => ({
     type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}

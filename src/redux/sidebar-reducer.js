@@ -1,4 +1,6 @@
 
+
+
 let initialState = [
     {id: 1, person: 'Petya', src: 'friend1.png'},
     {id: 2, person: 'Anna', src: 'friend2.png'},
