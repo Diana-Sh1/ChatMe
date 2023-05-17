@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ChatMe/static/css/main.097e1e64.css",
-    "main.js": "/ChatMe/static/js/main.1a52865f.js",
+    "main.js": "/ChatMe/static/js/main.8561a126.js",
     "static/css/672.5f13fc80.chunk.css": "/ChatMe/static/css/672.5f13fc80.chunk.css",
     "static/js/672.4dfa53a9.chunk.js": "/ChatMe/static/js/672.4dfa53a9.chunk.js",
     "static/css/341.56e7ad59.chunk.css": "/ChatMe/static/css/341.56e7ad59.chunk.css",
@@ -13,6 +13,7 @@
     "static/media/loginBG.png": "/ChatMe/static/media/loginBG.8a525c975e00ddfa368d.png",
     "static/media/profile_img.png": "/ChatMe/static/media/profile_img.2939c78731787ada7e3f.png",
     "static/media/logo.svg": "/ChatMe/static/media/logo.77082d81f84ef379c1560d13702f4ac8.svg",
+    "static/media/404.jpeg": "/ChatMe/static/media/404.5deae896eb1bda3cd2b7.jpeg",
     "static/media/user_default2.png": "/ChatMe/static/media/user_default2.5ae313cb254f0e5b5cc9.png",
     "static/media/arrow_down.png": "/ChatMe/static/media/arrow_down.1caa605d8ee6dd574c66.png",
     "static/media/texture2.svg": "/ChatMe/static/media/texture2.dd99a438ef50d8d3297c.svg",
@@ -21,7 +22,7 @@
     "index.html": "/ChatMe/index.html",
     "static/media/preloader.svg": "/ChatMe/static/media/preloader.cfc625a702c09d6507b2c2ea9d54a963.svg",
     "main.097e1e64.css.map": "/ChatMe/static/css/main.097e1e64.css.map",
-    "main.1a52865f.js.map": "/ChatMe/static/js/main.1a52865f.js.map",
+    "main.8561a126.js.map": "/ChatMe/static/js/main.8561a126.js.map",
     "672.5f13fc80.chunk.css.map": "/ChatMe/static/css/672.5f13fc80.chunk.css.map",
     "672.4dfa53a9.chunk.js.map": "/ChatMe/static/js/672.4dfa53a9.chunk.js.map",
     "341.56e7ad59.chunk.css.map": "/ChatMe/static/css/341.56e7ad59.chunk.css.map",
@@ -29,6 +30,6 @@
   },
   "entrypoints": [
     "static/css/main.097e1e64.css",
-    "static/js/main.1a52865f.js"
+    "static/js/main.8561a126.js"
   ]
 }
