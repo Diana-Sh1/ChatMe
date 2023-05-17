@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import {BrowserRouter, Routes, Route, HashRouter} from "react-router-dom";
+import {BrowserRouter, Routes, Route, HashRouter, Navigate} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
@@ -34,6 +34,7 @@ class App extends Component {
                     <div className='app-wrapper-content'>
                         <Suspense fallback={<div><Preloader/></div>}>
                         <Routes>
+                            <Route path="/" element={<Navigate to="/SOCHATTY" />} />
                             <Route path="/SOCHATTY" element={<SoChatty/>}/>
                             <Route path="/profile" element={<ProfileContainer/>}>
                                 <Route path=":userId" element={<ProfileContainer/>}/>
