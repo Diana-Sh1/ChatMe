@@ -1,9 +1,10 @@
 import './App.css';
 import React from "react";
-import {BrowserRouter, Routes, Route, HashRouter, Navigate} from "react-router-dom";
+import {Routes, Route, HashRouter, Navigate} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import SoChatty from "./components/SoChatty/SoChatty";
 import Music from "./components/Music/Music";
+import notFound from "./assets/404.jpeg"
 // import DialogsContainer from "./components/Dialogs/DialogsContainer";
 // import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -43,6 +44,7 @@ class App extends Component {
                             <Route path="/music" element={<Music/>}/>
                             <Route path="/users" element={<UsersContainer/>}/>
                             <Route path="/login" element={<LoginPage/>}/>
+                            <Route path="*" element={<img src={notFound} alt="error"/> }/>
                         </Routes>
                         </Suspense>
                     </div>
