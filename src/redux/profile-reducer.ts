@@ -1,5 +1,6 @@
 import {profileAPI} from "../api/api";
 import {getErrorsMessage} from "./auth-reducer";
+import {number} from "yup";
 
 
 const ADD_POST = 'ADD-POST';
@@ -8,7 +9,10 @@ const SET_STATUS = 'SET_STATUS';
 const DELETE_POST = 'DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
 
-
+type PostType = {
+    id: number
+    message: string
+}
 let initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?'},
