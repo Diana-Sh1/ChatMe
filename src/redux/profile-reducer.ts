@@ -1,39 +1,14 @@
 import {profileAPI} from "../api/api";
 import {getErrorsMessage} from "./auth-reducer";
-import {number} from "yup";
+import {PhotosType, PostType, ProfileType} from "../types/types";
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const DELETE_POST = 'DELETE_POST';
-const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS'
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
-type PhotosType = {
-    small: string | null
-    large: string | null
-}
-type ContactsType = {
-    github: string
-    vk: string
-    facebook: string
-    instagram: string
-    twitter: string
-    website: string
-    youtube: string
-    mainLink: string
-}
-type ProfileType = {
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    fullName: string
-    contacts: ContactsType
-    photos: PhotosType
 
-}
-type PostType = {
-    id: number
-    message: string
-}
 
 let initialState = {
     posts: [
