@@ -15,7 +15,7 @@ type Props = {
     follow: (userId: number)=> void
 
 }
-let Users: FC<Props> = ({currentPage, onPageChanged, totalItemsCount, pageSize, users, ...props}) => {
+const Users: FC<Props> = ({currentPage, onPageChanged, totalItemsCount, pageSize, users, ...props}) => {
 
     return <div className={s.content}>
         <h2 className={s.title}>List of Users</h2>

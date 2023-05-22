@@ -31,3 +31,13 @@ export type UserType = {
     status: string
     photos: PhotosType
 }
+export type MessagesType = {
+    id: number
+    message: string
+    person: string
+    src: string
+}
+export type DialogsType = {
+    id: number
+    name: string
+}

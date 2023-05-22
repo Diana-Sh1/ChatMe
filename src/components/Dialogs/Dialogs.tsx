@@ -2,22 +2,28 @@ import s from "./Dialogs.module.css"
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {useForm} from "react-hook-form";
-import React from "react";
+import React, {FC} from "react";
 import Button from "../Button/Button";
+import {DialogsType, MessagesType} from "../../types/types";
 
+type Props = {
+    dialogs: DialogsType[]
+    messages: MessagesType[]
+    sendMessage: (newMessageBody: string) => void
+}
 
+const Dialogs: FC<Props> = ({dialogs, messages, sendMessage}) => {
+    let DialogsElements = dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    let messagesElements = messages.map(m => <Message  key={m.id} message={m.message} person={m.person} src={m.src}/>)
 
-const Dialogs = (props) => {
-    let state = props.dialogsPage;
-
-    let DialogsElements = state.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
-    let messagesElements = state.messages.map(m => <Message store={props.store} key={m.id} message={m.message} person={m.person} src={m.src}/>)
-
-    const onSubmit = (data) => {
-        props.sendMessage(data.newMessageBody);
+    type FormValues = {
+        newMessageBody: string;
+    };
+    const onSubmit = (data: any) => {
+        sendMessage(data.newMessageBody);
         reset();
     }
-    const {register, formState: {errors}, handleSubmit, reset} = useForm({
+    const {register, formState: {errors}, handleSubmit, reset} = useForm<FormValues>({
         mode: "onSubmit"
     });
     return (
