@@ -41,3 +41,8 @@ export type DialogsType = {
     id: number
     name: string
 }
+export type SideBarType = {
+    person: string
+    id: number
+    src: string
+}

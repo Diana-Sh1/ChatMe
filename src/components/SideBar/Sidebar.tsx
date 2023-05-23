@@ -1,9 +1,14 @@
 import s from './Sidebar.module.css'
 import Item from "./Item/Item";
+import {FC} from "react";
+import {SideBarType} from "../../types/types";
 
-const SideBar = (props) => {
+type Props = {
+    sidebar: SideBarType[]
+}
+const SideBar: FC<Props> = ({sidebar}) => {
 
-    let friendElement = props.sidebar.map(f => <Item person={f.person} key={f.id} src={f.src}/>);
+    let friendElement = sidebar.map(f => <Item person={f.person} key={f.id} src={f.src}/>);
 
     return (
         <div className={s.content}>
