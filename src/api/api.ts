@@ -1,5 +1,5 @@
-import axios, {AxiosResponse} from "axios";
-import {ProfileType} from "../types/types";
+import axios from "axios";
+import {ProfileType, UserType} from "../types/types";
 
 
 const instance = axios.create({
@@ -9,10 +9,26 @@ const instance = axios.create({
     },
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
 })
+
+type RequestUsersType = {
+    items: UserType[]
+        // {
+        //     id: number
+        //     name: string
+        //     status: string
+        //     photos: {
+        //         small: string
+        //         large: string
+        //     }
+        //     followed: boolean
+        // }
+    totalCount: number
+    error: string
+}
 export const usersAPI = {
 
     requestUsers(currentPage = 1, pageSize = 10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+        return instance.get<RequestUsersType>(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data);
     },
     unfollow(id: number) {
@@ -24,20 +40,23 @@ export const usersAPI = {
             .then(response => response.data);
     },
     getProfile(userId: number) {
-
         return profileAPI.getProfile(userId)
     }
 }
+
+type ProfileResponseType = {
+    userId: number
+}
+type StatusResponseType = {
+    userId: number
+}
 export const profileAPI = {
-
     getProfile(userId: number) {
-        return instance.get(`profile/` + userId)
+        return instance.get<ProfileResponseType>(`profile/` + userId)
             .then(response => response.data);
-
     },
-
     getStatus(userId: number) {
-        return instance.get(`profile/status/` + userId)
+        return instance.get<StatusResponseType>(`profile/status/` + userId)
             .then(response => response.data);
     },
     updateStatus(status: string) {
@@ -63,9 +82,10 @@ export const profileAPI = {
 
 export enum ResultCodesEnum {
     Success = 0,
-    Error = 1 ,
+    Error = 1,
     CaptchaIsRequired = 10
 }
+
 type MeResponseType = {
     data: {
         id: number
@@ -99,10 +119,12 @@ export const authAPI = {
     }
 }
 
-
+type CaptchaResponseType = {
+    url: string
+}
 export const securityAPI = {
     getCaptchaUrl() {
-        return instance.get(`security/get-captcha-url`)
+        return instance.get<CaptchaResponseType>(`security/get-captcha-url`)
             .then(response => response.data)
     }
 }
