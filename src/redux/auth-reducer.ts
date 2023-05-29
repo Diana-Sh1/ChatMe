@@ -1,5 +1,4 @@
-import {authAPI, securityAPI} from "../api/api";
-import {boolean} from "yup";
+import {authAPI, ResultCodesEnum, securityAPI} from "../api/api";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const ERRORS = 'ERRORS'
@@ -70,23 +69,23 @@ export const getErrorsMessage = (messages: string): getErrorsMessageType => ({ty
 
 
 export const getAuthUserData = () => async (dispatch: any) => {
-    let data = await authAPI.me();
-    if (data.resultCode === 0) {
-        let {id, email, login} = data.data;
+    let meData = await authAPI.me();
+    if (meData.resultCode === ResultCodesEnum.Success) {
+        let {id, email, login} = meData.data;
         dispatch(setAuthUserData(id, email, login, true));
     }
 }
 
 export const login = (email: string, password: string, rememberMe: boolean, captcha: any) => async (dispatch: any) => {
 
-    let data = await authAPI.login(email, password, rememberMe, captcha)
-    if (data.resultCode === 0) {
+    let loginData = await authAPI.login(email, password, rememberMe, captcha)
+    if (loginData.resultCode === ResultCodesEnum.Success) {
         dispatch(getAuthUserData())
     } else {
-        if (data.resultCode === 10 ) {
+        if (loginData.resultCode === ResultCodesEnum.CaptchaIsRequired ) {
             dispatch(getCaptchaUrl());
         }
-        let messages = data.messages[0]
+        let messages = loginData.messages[0]
         dispatch(getErrorsMessage(messages))
     }
 
