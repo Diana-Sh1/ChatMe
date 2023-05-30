@@ -5,7 +5,7 @@ import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus, } from 
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {getErrorsMessage} from "../../redux/auth-reducer";
+
 
 export const withRouter = (Component) => {
     return (props) => {
@@ -67,7 +67,7 @@ let mapStateToProps = (state) => ({
     messages: state.auth.messages
 })
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto, saveProfile, getErrorsMessage}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto, saveProfile}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer)

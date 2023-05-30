@@ -52,11 +52,11 @@ type StatusResponseType = {
 }
 export const profileAPI = {
     getProfile(userId: number) {
-        return instance.get<ProfileResponseType>(`profile/` + userId)
+        return instance.get(`profile/` + userId)
             .then(response => response.data);
     },
     getStatus(userId: number) {
-        return instance.get<StatusResponseType>(`profile/status/` + userId)
+        return instance.get(`profile/status/` + userId)
             .then(response => response.data);
     },
     updateStatus(status: string) {
