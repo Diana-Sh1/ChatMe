@@ -1,4 +1,6 @@
 import {authAPI, ResultCodesEnum, securityAPI} from "../api/api";
+import {InferActionsTypes} from "./redux-store";
+import {actions} from "./users-reducer";
 
 const SET_USER_DATA = 'auth/SET_USER_DATA';
 const ERRORS = 'ERRORS'
@@ -43,7 +45,11 @@ type SetAuthUserDataPayloadType = {
     login: string | null
     isAuth: boolean
 }
+type ActionsTypes = InferActionsTypes<typeof actions>
 
+export type actions = {
+
+}
 type SetAuthUserDataActionType = {
     type: typeof SET_USER_DATA,
     payload: SetAuthUserDataPayloadType
@@ -51,8 +57,6 @@ type SetAuthUserDataActionType = {
 export const setAuthUserData = (id: number | null, email: string | null, login: string | null, isAuth: boolean): SetAuthUserDataActionType => ({
     type: SET_USER_DATA, payload: {id, email, login, isAuth}
 })
-
-
 type GetCaptchaSuccessActionType = {
     type: typeof GET_CAPTCHA_URL_SUCCESS,
     payload: { captchaUrl: string}
@@ -60,7 +64,6 @@ type GetCaptchaSuccessActionType = {
 export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaSuccessActionType => ({
     type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}
 })
-
 type getErrorsMessageType = {
     type: typeof ERRORS,
     messages: string
