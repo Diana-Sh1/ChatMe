@@ -1,6 +1,8 @@
-import {authAPI, ResultCodesEnum, securityAPI} from "../api/api";
+import { ResultCodesEnum} from "../api/api";
 import {AppStateType, InferActionsTypes} from "./redux-store";
 import {ThunkAction} from "redux-thunk";
+import {authAPI} from "../api/auth-api";
+import {securityAPI} from "../api/security-api";
 
 
 export type InitialStateType = typeof initialState
