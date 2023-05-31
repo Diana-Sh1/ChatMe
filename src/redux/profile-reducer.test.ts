@@ -1,14 +1,17 @@
-import profileReducer, {addPost, deletePost} from "./profile-reducer";
+import profileReducer, {actions} from "./profile-reducer";
 
 let state = {
     posts: [
         {id: 1, message: 'Hi, how are you?'},
         {id: 2, message: 'I\'s my first react app'}
-    ]
+    ],
+    newPostText: '',
+    profile: null,
+    status: ''
 }
 it ('length of posts should be incremented', () => {
     //1. test data
-    let action = addPost('Hey')
+    let action = actions.addPost('Hey')
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation
@@ -16,7 +19,7 @@ it ('length of posts should be incremented', () => {
 })
 it ('message of new post should be correct', () => {
     //1. test data
-    let action = addPost('Hey')
+    let action = actions.addPost('Hey')
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation
@@ -24,7 +27,7 @@ it ('message of new post should be correct', () => {
 })
 it ('length of messages should be decrement after deleting', () => {
     //1. test data
-    let action = deletePost(1)
+    let action = actions.deletePost(1)
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation
@@ -32,7 +35,7 @@ it ('length of messages should be decrement after deleting', () => {
 })
 it (`after deleting length of messages shouldn't be decrement if id is incorrect`, () => {
     //1. test data
-    let action = deletePost(100)
+    let action = actions.deletePost(100)
     //2. action
     let newState = profileReducer(state, action)
     //3. expectation

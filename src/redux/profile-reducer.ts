@@ -1,21 +1,9 @@
 import { ResultCodesEnum} from "../api/api";
 import {actionsAuth} from "./auth-reducer";
 import {PhotosType, PostType, ProfileType} from "../types/types";
-import {ThunkAction} from "redux-thunk";
-import {AppStateType, InferActionsTypes} from "./redux-store";
+import {BaseThunkType, InferActionsTypes} from "./redux-store";
 import {profileAPI} from "../api/profile-api";
 
-
-let initialState = {
-    posts: [
-        {id: 1, message: 'Hi, how are you?'},
-        {id: 2, message: 'I\'s my first react app'}
-    ] as PostType[],
-    newPostText: '',
-    profile: null as ProfileType | null,
-    status: ''
-}
-export type  InitialStateType = typeof initialState
 
 
 const profileReducer = (state = initialState, action: ActionsTypes):InitialStateType => {
@@ -69,9 +57,6 @@ export const actions = {
     savePhotoSuccess: (photo: PhotosType) => ({type: 'SAVE_PHOTO_SUCCESS', photo} as const)
 }
 
-
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
-
 export const getUserProfile = (userId: number): ThunkType => async (dispatch) => {
     const data = await profileAPI.getProfile(userId)
     dispatch(actions.setUserProfile(data));
@@ -88,18 +73,21 @@ export const updateStatus = (status: string): ThunkType => async (dispatch) => {
         dispatch(actions.setStatus(status));
     }
 }
-export const savePhoto = (file: any): ThunkType => async (dispatch) => {
+export const savePhoto = (file: File): ThunkType => async (dispatch) => {
     const data = await profileAPI.savePhoto(file)
     if (data.resultCode === ResultCodesEnum.Success) {
     dispatch(actions.savePhotoSuccess(data.data.photos))
     }
 }
 
-export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch: any, getState: any) => {
+export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch:any, getState) => {
     const userId = getState().auth.id
     let data = await profileAPI.saveProfile(profile);
     if (data.resultCode === ResultCodesEnum.Success) {
-        dispatch(getUserProfile(userId));
+        if (userId != null) {
+            dispatch(getUserProfile(userId));
+        } else throw new Error("userId can't be null")
+
     } else {
         let messages = data.messages[0]
         dispatch(actionsAuth.getErrorsMessage(messages))
@@ -107,3 +95,15 @@ export const saveProfile = (profile: ProfileType): ThunkType => async (dispatch:
     }
 }
 export default profileReducer;
+
+let initialState = {
+    posts: [
+        {id: 1, message: 'Hi, how are you?'},
+        {id: 2, message: 'I\'s my first react app'}
+    ] as PostType[],
+    newPostText: '',
+    profile: null as ProfileType | null,
+    status: ''
+}
+export type  InitialStateType = typeof initialState
+type ThunkType = BaseThunkType<ActionsTypes>

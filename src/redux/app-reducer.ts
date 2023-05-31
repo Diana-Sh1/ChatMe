@@ -3,14 +3,10 @@ import {AppStateType, InferActionsTypes} from "./redux-store";
 import {ThunkAction} from "redux-thunk";
 
 
-export type InitialState = {
-    initialized: boolean
-}
-
-let initialState: InitialState = {
+let initialState = {
     initialized: false
 }
-
+export type InitialState =typeof initialState
 
 const appReducer = (state = initialState, action: ActionsTypes): InitialState => {
     switch (action.type) {
