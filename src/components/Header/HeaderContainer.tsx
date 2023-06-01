@@ -22,5 +22,5 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     isAuth: state.auth.isAuth
 });
 
-export default connect<MapStatePropsType, MapDispatchPropsType, null, AppStateType>
+export default connect
 (mapStateToProps, {logout}) (HeaderContainer);

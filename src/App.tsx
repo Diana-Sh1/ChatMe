@@ -14,15 +14,21 @@ import {Component, Suspense} from "react";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import {AppStateType} from "./redux/redux-store";
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
-class App extends Component {
+
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+    initializeApp: ()=> void
+}
+
+class App extends Component<MapPropsType & DispatchPropsType> {
 
     componentDidMount() {
         this.props.initializeApp();
     }
-
     render() {
         if (!this.props.initialized) {
             return <Preloader/>
@@ -54,7 +60,7 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: AppStateType) => ({
     initialized: state.app.initialized
 })
 export default connect(mapStateToProps, {initializeApp})(App);
