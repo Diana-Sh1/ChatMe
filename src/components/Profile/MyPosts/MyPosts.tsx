@@ -1,19 +1,26 @@
 import Button from "../../Button/Button";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import React from 'react'
+import React, {FC} from 'react'
 import {useForm} from "react-hook-form";
+import {PostType} from "../../../types/types";
 
 
-
-const MyPosts = (props) => {
+type PropsType = {
+    posts: PostType[]
+    addPost: (newPostText: string) => void
+}
+const MyPosts: FC<PropsType> = (props) => {
 
     let postsElements = props.posts.map(p => <Post key={p.id} message={p.message}/>)
-    const onSubmit = (data) => {
+    const onSubmit = (data: FormValues) => {
         props.addPost(data.newPostText);
         reset();
     }
-    const {register, formState: {errors}, handleSubmit, reset} = useForm({
+    type FormValues = {
+        newPostText: string
+    }
+    const {register, formState: {errors}, handleSubmit, reset} = useForm<FormValues>({
         mode: "onSubmit"
     });
 

@@ -19,7 +19,7 @@ const Dialogs: FC<Props> = ({dialogs, messages, sendMessage}) => {
     type FormValues = {
         newMessageBody: string;
     };
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: FormValues) => {
         sendMessage(data.newMessageBody);
         reset();
     }

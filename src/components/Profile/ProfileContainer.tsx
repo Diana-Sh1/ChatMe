@@ -5,23 +5,37 @@ import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus, } from 
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {AppStateType} from "../../redux/redux-store";
 
-
-export const withRouter = (Component) => {
-    return (props) => {
+type PathParamType = {
+    userId: string
+}
+type withRouterProps = {
+   
+}
+export const withRouter = (Component: React.ComponentType) => {
+    return (props: withRouterProps) => {
         let location = useLocation();
         let navigate = useNavigate();
         let params = useParams();
         return (
             <Component
                 {...props}
-                router={{location, navigate, params}}
+                router={{navigate, params, location}}
             />
         );
     };
 }
 
-class ProfileContainer extends React.Component {
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type MapDispatchPropsType = {
+        getUserProfile: (userId: string)=> void
+        getStatus: (userId: string)=> void
+        updateStatus: ()=> void
+        savePhoto: ()=> void
+        saveProfile: ()=> void
+}
+class ProfileContainer extends React.Component<MapPropsType & MapDispatchPropsType & PathParamType > {
     refreshProfile() {
         let userId = this.props.router.params.userId;
         if (!userId) {
@@ -59,7 +73,7 @@ class ProfileContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => ({
+let mapStateToProps = (state: AppStateType) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     authorizedUserId: state.auth.id,

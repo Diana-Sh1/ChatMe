@@ -2,7 +2,7 @@ import { ResultCodesEnum} from "../api/api";
 import { BaseThunkType, InferActionsTypes} from "./redux-store";
 import {authAPI} from "../api/auth-api";
 import {securityAPI} from "../api/security-api";
-import {Action} from "redux";
+
 
 
 let initialState = {

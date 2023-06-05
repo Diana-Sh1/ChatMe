@@ -1,10 +1,27 @@
 import s from "./ProfileInfo.module.css";
 import {useForm} from "react-hook-form";
-import React from "react";
+import React, {FC} from "react";
+import {ContactsType, PhotosType, ProfileType} from "../../../types/types";
 
 
-const ProfileDataForm = ({onSubmit, profile, messages}) => {
-    const {register, formState: {errors}, handleSubmit} = useForm({
+type ProfileFormPropsType = {
+    onSubmit: (data: ProfileType) => Promise<void>
+    profile: ProfileType
+    messages: string
+}
+const ProfileDataForm: FC<ProfileFormPropsType> = ({onSubmit, profile, messages}) => {
+    type FormValues = {
+        lookingForAJob: boolean
+        fullName: string
+        lookingForAJobDescription: string
+        aboutMe: string
+        contacts: ContactsType
+        photos: PhotosType
+
+    }
+
+
+    const {register, formState: {errors}, handleSubmit} = useForm<FormValues & ProfileFormPropsType>({
         defaultValues: profile,
         mode: "onBlur"
     });
