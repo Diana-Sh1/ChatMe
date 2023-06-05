@@ -7,7 +7,7 @@ import {ContactsType, PhotosType, ProfileType} from "../../../types/types";
 type ProfileFormPropsType = {
     onSubmit: (data: ProfileType) => Promise<void>
     profile: ProfileType
-    messages: string
+    messages: string | null
 }
 const ProfileDataForm: FC<ProfileFormPropsType> = ({onSubmit, profile, messages}) => {
     type FormValues = {

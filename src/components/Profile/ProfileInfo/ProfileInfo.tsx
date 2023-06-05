@@ -10,13 +10,13 @@ import ProfileDataForm from "./ProfileDataForm";
 import {ContactsType, ProfileType} from "../../../types/types";
 
 type PropsType = {
-    profile: ProfileType
+    profile: ProfileType | null
     status: string
     updateStatus:(status: string)=> void
     isOwner: boolean
     savePhoto: (fle: File)=> void
     saveProfile: (profile: ProfileType)=> Promise<any>
-    messages: string
+    messages: string | null
 }
 const ProfileInfo: FC<PropsType> = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile, messages}) => {
     let [editMode, setEditMode] = useState(false);

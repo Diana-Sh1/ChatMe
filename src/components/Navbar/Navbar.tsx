@@ -1,9 +1,10 @@
 import s from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import SidebarContainer from "../SideBar/SidebarContainer";
+import {FC} from "react";
 
 
-    const Navbar = () => {
+    const Navbar: FC = () => {
 
     return (
 

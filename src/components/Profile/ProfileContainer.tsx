@@ -34,12 +34,13 @@ export const withRouter = <Props extends withRouterProps>
 }
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
+
 type MapDispatchPropsType = {
     getUserProfile: (userId: number) => void
     getStatus: (userId: number) => void
     updateStatus: (status: string) => void
     savePhoto: (file: File) => void
-    saveProfile: (profile: ProfileType) => void
+    saveProfile: (profile: ProfileType) => Promise<any>
 }
 type Created = MapPropsType & MapDispatchPropsType & PathParamType & withRouterProps
 
