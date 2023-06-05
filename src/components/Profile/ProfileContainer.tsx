@@ -1,27 +1,33 @@
 import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus, } from "../../redux/profile-reducer";
+import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus,} from "../../redux/profile-reducer";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {AppStateType} from "../../redux/redux-store";
+import {ProfileType} from "../../types/types";
 
 type PathParamType = {
-    userId: string
+    userId: number
 }
 type withRouterProps = {
-   
+    location: ReturnType<typeof useLocation>;
+    params: Record<string, string>;
+    navigate: ReturnType<typeof useNavigate>;
 }
-export const withRouter = (Component: React.ComponentType) => {
-    return (props: withRouterProps) => {
+export const withRouter = <Props extends withRouterProps>
+(Component: React.ComponentType<Props>) => {
+    return (props: Omit<Props, keyof withRouterProps>) => {
         let location = useLocation();
         let navigate = useNavigate();
         let params = useParams();
         return (
             <Component
-                {...props}
-                router={{navigate, params, location}}
+                {...props as Props}
+                navigate={navigate}
+                params={params}
+                location={location}
             />
         );
     };
@@ -29,31 +35,37 @@ export const withRouter = (Component: React.ComponentType) => {
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type MapDispatchPropsType = {
-        getUserProfile: (userId: string)=> void
-        getStatus: (userId: string)=> void
-        updateStatus: ()=> void
-        savePhoto: ()=> void
-        saveProfile: ()=> void
+    getUserProfile: (userId: number) => void
+    getStatus: (userId: number) => void
+    updateStatus: (status: string) => void
+    savePhoto: (file: File) => void
+    saveProfile: (profile: ProfileType) => void
 }
-class ProfileContainer extends React.Component<MapPropsType & MapDispatchPropsType & PathParamType > {
+type Created = MapPropsType & MapDispatchPropsType & PathParamType & withRouterProps
+
+class ProfileContainer extends React.Component<Created> {
     refreshProfile() {
-        let userId = this.props.router.params.userId;
+        let userId: number | null = +this.props.params.userId;
         if (!userId) {
             userId = this.props.authorizedUserId;
             if (!userId) {
-                this.props.router.navigate('/login')
+                this.props.navigate('/login')
             }
         }
-        this.props.getUserProfile(userId);
-        this.props.getStatus(userId);
+        if (!userId) {
+            throw new Error ('ID should exists');
+        } else {
+            this.props.getUserProfile(userId);
+            this.props.getStatus(userId);
+        }
     }
 
     componentDidMount() {
         this.refreshProfile()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.router.params.userId !== prevProps.router.params.userId) {
+    componentDidUpdate(prevProps: Created, prevState: Created) {
+        if (this.props.params.userId !== prevProps.params.userId) {
             this.refreshProfile()
         }
 
@@ -65,7 +77,7 @@ class ProfileContainer extends React.Component<MapPropsType & MapDispatchPropsTy
                      profile={this.props.profile}
                      status={this.props.status}
                      updateStatus={this.props.updateStatus}
-                     isOwner={!this.props.router.params.userId}
+                     isOwner={!this.props.params.userId}
                      savePhoto={this.props.savePhoto}
                      saveProfile={this.props.saveProfile}
                      messages={this.props.messages}/>
