@@ -18,8 +18,6 @@ const ProfileDataForm: FC<ProfileFormPropsType> = ({onSubmit, profile, messages}
         contacts: ContactsType
         photos: PhotosType
     }
-
-
     const {register, formState: {errors}, handleSubmit} = useForm<FormValues & ProfileFormPropsType>({
         defaultValues: profile,
         mode: "onBlur"
@@ -42,7 +40,6 @@ const ProfileDataForm: FC<ProfileFormPropsType> = ({onSubmit, profile, messages}
                         <p className={s.errors}>{errors.fullName?.message}</p>}
                     </div>
                 </div>
-
                 <div className={s.inner_wrapper}>
                     <div className={s.label}>
                         <span className={s.title}>My skills</span>
