@@ -68,13 +68,13 @@ const ProfileDataForm: FC<ProfileFormPropsType> = ({onSubmit, profile, messages}
                            </div>
                         </div>
                     </div>
-                    <div className={s.label}><span className={s.title}>Contacts</span>
+                    <div className={s.label}>
+                        <span className={s.title}>Contacts</span>
                         {Object.keys(profile.contacts).map(key => {
                             return <div className={s.contact_block}>
                                 <b>{key}: <input {...register("contacts." + key )} className={s.input_contact}/> </b>
                             </div>
                         })}
-
                     </div>
                 </div>
                 <div className={s.errors}>{messages}</div>

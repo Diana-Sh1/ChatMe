@@ -96,3 +96,10 @@
     font-weight: 700;
 
 }
+.form {
+    text-align: center;
+}
+.errors {
+    color: #ff4d4d;
+    font-size: 0.7rem;
+}
