@@ -22,7 +22,6 @@ const ProfileDataForm: FC<ProfileFormPropsType> = ({onSubmit, profile, messages}
         defaultValues: profile,
         mode: "onBlur"
     });
-
     return <>
         <form className={s.card} onSubmit={handleSubmit(onSubmit)}>
             <div className={s.inner}>

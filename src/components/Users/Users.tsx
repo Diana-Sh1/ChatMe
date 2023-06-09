@@ -27,9 +27,11 @@ export const Users: FC = () => {
     const followingInProgress = useSelector(getFollowingInProgress)
 
     const dispatch: AppDispatch = useDispatch()
+
     useEffect(()=> {
         dispatch(requestUsers(currentPage, pageSize,filter));
     },[])
+
 
     const onPageChanged =(pageNumber: number)=> {
         dispatch(requestUsers(pageNumber, pageSize, filter));
@@ -44,9 +46,7 @@ export const Users: FC = () => {
         dispatch(unfollowThunk(userId));
     }
 
-
     return <div className={s.content}>
-
         <h2 className={s.title}>List of Users</h2>
         <div className={s.pagination}>
             <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
