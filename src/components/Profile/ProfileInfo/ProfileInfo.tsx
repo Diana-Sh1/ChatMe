@@ -2,24 +2,67 @@ import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import yes from "../../../assets/yes_pic.png"
 import no from "../../../assets/no_pic.png"
-import loadPhoto from "../../../assets/loadImage.svg"
 import userDefaultPic from "../../../assets/user_default2.png";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-import {ChangeEvent, ChangeEventHandler, FC, useState} from "react";
+import {ChangeEvent, FC, useEffect, useState} from "react";
 import ProfileDataForm from "./ProfileDataForm";
 import {ContactsType, ProfileType} from "../../../types/types";
+import {useNavigate, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, AppStateType} from "../../../redux/redux-store";
+import {
+    getStatus,
+    getUserProfile,
+    savePhoto as savePhotoThunk,
+    saveProfile as saveProfileThunk,
+    updateStatus as updateStatusThunk
+} from "../../../redux/profile-reducer";
 
-type PropsType = {
-    profile: ProfileType | null
-    status: string
-    updateStatus:(status: string)=> void
-    isOwner: boolean
-    savePhoto: (fle: File)=> void
-    saveProfile: (profile: ProfileType)=> Promise<any>
-    messages: string | null
-}
-const ProfileInfo: FC<PropsType> = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile, messages}) => {
+
+const ProfileInfo: FC = () => {
+    const refreshProfile =()=>{
+        // @ts-ignore
+        let userId: number | null = params.userId;
+        if (!userId) {
+            userId = authorizedUserId;
+            if (!userId) {
+                navigate('/login')
+            }
+        }
+        if (!userId) {
+            throw new Error ('ID should exists');
+        } else {
+            dispatch(getUserProfile(userId));
+            dispatch(getStatus(userId));
+        }
+    }
+
+    useEffect(()=> {
+        refreshProfile()
+    },[])
+
     let [editMode, setEditMode] = useState(false);
+    let navigate = useNavigate();
+    let params = useParams();
+
+    const {profile, status, authorizedUserId, messages} = useSelector((state: AppStateType) => ({
+        profile: state.profilePage.profile,
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.id,
+        messages: state.auth.messages,
+
+    }))
+
+    const dispatch: AppDispatch = useDispatch()
+    const updateStatus =(status: string)=> {
+        dispatch(updateStatusThunk(status))
+}
+    const savePhoto =(file: File)=> {
+        dispatch(savePhotoThunk(file))
+}
+    const saveProfile =(profile: ProfileType)=> {
+        dispatch(saveProfileThunk(profile))
+}
 
     type ContactsPropsType = {
         contactTitle: string
@@ -31,10 +74,10 @@ const ProfileInfo: FC<PropsType> = ({profile, status, updateStatus, isOwner, sav
 
     type ProfileDataPropsType = {
         profile: ProfileType
-        isOwner: boolean
         goToEditMode: ()=> void
     }
-    const ProfileData: FC<ProfileDataPropsType> = ({profile, isOwner, goToEditMode}) => {
+    const ProfileData: FC<ProfileDataPropsType> = ({profile, goToEditMode}) => {
+        let isOwner=!params.userId
         return <div className={s.card}>
             <h2>{profile.fullName}</h2>
             <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
@@ -91,12 +134,11 @@ const ProfileInfo: FC<PropsType> = ({profile, status, updateStatus, isOwner, sav
                 <div className={s.image}>
                     <img alt='' src={profile.photos.large || userDefaultPic}></img>
                 </div>
-                {/*tut*/}
             </div>
 
             {editMode
                 ? <ProfileDataForm profile={profile} onSubmit={onSubmit} messages={messages}/>
-                : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => {
+                : <ProfileData profile={profile} goToEditMode={() => {
                     setEditMode(true)
                 }}/>}
 

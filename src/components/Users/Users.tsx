@@ -17,7 +17,7 @@ import {
 import {AppDispatch} from "../../redux/redux-store";
 
 
-export const Users: FC = ({...props}) => {
+export const Users: FC = () => {
 
     const users = useSelector(getUsers)
     const totalItemsCount = useSelector(getTotalUsersCount)
