@@ -2,24 +2,17 @@ import React, {FC} from "react";
 import s from "./Login.module.css"
 import loginPic from "../../assets/persons2.png"
 import logPic from "../../assets/loginPic.png"
-import {connect, useDispatch, useSelector} from "react-redux";
-import {login} from "../../redux/auth-reducer";
+import {useSelector} from "react-redux";
+
 import {AppStateType} from "../../redux/redux-store";
 import {LoginForm} from "./LoginForm";
 
-
-type MapDispatchPropsType = {
-    login: (email: string, password: string, rememberMe: boolean, captcha: string) => void
-}
-
-const Login: FC<MapDispatchPropsType> = ({login}) => {
+export const LoginPage: FC = () => {
     const {captchaUrl, isAuth, messages} = useSelector((state: AppStateType) => ({
         captchaUrl: state.auth.captchaUrl,
         isAuth: state.auth.isAuth,
         messages: state.auth.messages
     }))
-    const dispatch = useDispatch()
-
 
     return <div className={s.content}>
         <div className={s.inner}>
@@ -30,7 +23,6 @@ const Login: FC<MapDispatchPropsType> = ({login}) => {
                     <LoginForm isAuth={isAuth}
                                messages={messages}
                                captchaUrl={captchaUrl}
-                               login={login}
                     />
                     </div>
                 </div>
@@ -44,4 +36,3 @@ const Login: FC<MapDispatchPropsType> = ({login}) => {
 
 }
 
-export default connect(null, {login})(Login);

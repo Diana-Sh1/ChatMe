@@ -2,14 +2,18 @@ import React, {FC} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Navigate} from "react-router-dom";
 import s from "./Login.module.css";
+import {useDispatch} from "react-redux";
+import {login} from "../../redux/auth-reducer";
+import {AppDispatch} from "../../redux/redux-store";
 
 type PropsType = {
     isAuth: boolean
     messages: string | null
     captchaUrl: string | null
-    login: (email: string, password: string, rememberMe: boolean, captcha: string) => void
+    // login: (email: string, password: string, rememberMe: boolean, captcha: string) => void
 }
-export const LoginForm: FC<PropsType> = ({isAuth, messages, captchaUrl, login}) => {
+export const LoginForm: FC<PropsType> = ({isAuth, messages, captchaUrl}) => {
+    const dispatch: AppDispatch = useDispatch()
 
     type FormValues = {
         email: string
@@ -26,7 +30,7 @@ export const LoginForm: FC<PropsType> = ({isAuth, messages, captchaUrl, login}) 
     });
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        login(data.email, data.password, data.rememberMe, data.captcha);
+        dispatch(login(data.email, data.password, data.rememberMe, data.captcha));
         reset();
     }
     if (isAuth) {

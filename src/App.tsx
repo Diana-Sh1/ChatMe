@@ -9,7 +9,7 @@ import notFound from "./assets/404.jpeg"
 // import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginPage from "./components/Login/Login";
+import {LoginPage} from "./components/Login/LoginPage";
 import {Component, Suspense} from "react";
 import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
