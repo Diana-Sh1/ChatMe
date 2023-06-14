@@ -3,7 +3,6 @@ import {updateObjectInArray} from "../utils/object-helpers";
 import { UserType} from "../types/types";
 import {BaseThunkType, InferActionsTypes} from "./redux-store";
 import {usersAPI} from "../api/users-api";
-import {boolean} from "yup";
 
 
 let initialState = {

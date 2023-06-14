@@ -13,7 +13,7 @@ import {FC} from "react";
                 <li className={s.li}><NavLink to="/SOCHATTY" className = { navData => navData.isActive ? s.active : s.item }>SoChatty</NavLink></li>
                 <li className={s.li}><NavLink to="/profile" className = { navData => navData.isActive ? s.active : s.item }>Profile</NavLink></li>
                 <li className={s.li}><NavLink to="/dialogs" className = { navData => navData.isActive ? s.active : s.item }>Dialogs</NavLink></li>
-                {/*<li className={s.li}><NavLink to="/music" className = { navData => navData.isActive ? s.active : s.item }>Music</NavLink></li>*/}
+                <li className={s.li}><NavLink to="/chat" className = { navData => navData.isActive ? s.active : s.item }>Chat</NavLink></li>
                 <br/>
                 <li className={s.li}><NavLink to="/users" className = { navData => navData.isActive ? s.active : s.item }>Find Users</NavLink></li>
             </ul>

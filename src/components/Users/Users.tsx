@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useState} from "react";
 import s from "./Users.module.css"
 import Paginator from "../common/Paginator/Paginator";
 import User from "./User";
@@ -15,9 +15,9 @@ import {
     getUsersFilter
 } from "../../redux/users-selector";
 import {AppDispatch} from "../../redux/redux-store";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 
-
+type QueryParamsType = {term?: string; friend?: string; page?: string}
 export const Users: FC = () => {
 
     const users = useSelector(getUsers)
@@ -30,52 +30,44 @@ export const Users: FC = () => {
     const dispatch: AppDispatch = useDispatch()
     const history = useNavigate()
     const location = useLocation()
+    const [searchParams] = useSearchParams(location.search)
 
     useEffect(() => {
-        const search = location.search
-        const params = new URLSearchParams(search)
-        const parsedTerm = params.get('term')
-        const parsedPage = params.get('page')
-        const parsedFriend = params.get('friend')
+        let parsed: QueryParamsType = Object.fromEntries([...searchParams])
+
         let actualPage = currentPage
         let actualFilter = filter
 
-        if (parsedPage !== null) {
-            actualPage = Number(parsedPage)
-        }
-        if (parsedTerm !== null) {
-            actualFilter = { ...actualFilter, term: parsedTerm }
-        }
-        switch (parsedFriend) {
-            case '':
-                actualFilter = { ...actualFilter, friend: null }
+        if(!!parsed.page) actualPage = Number(parsed.page)
+        if(!!parsed.term) actualFilter = {...actualFilter, term: parsed.term}
+
+        switch (parsed.friend) {
+            case "null":
+                actualFilter = {...actualFilter, friend: null}
+                break;
+            case "true": {
+                actualFilter = {...actualFilter, friend: true}
+            }
+            break;
+            case "false": {
+                actualFilter = {...actualFilter, friend: false}
                 break
-            case 'true':
-                actualFilter = { ...actualFilter, friend: true }
-                break
-            case 'false':
-                actualFilter = { ...actualFilter, friend: false }
-                break
+            }
         }
+
         dispatch(requestUsers(actualPage, pageSize, actualFilter))
     }, [])
 
     useEffect(() => {
-        const query: { term?: string; friend?: string; page?: string } = {}
 
-        if (filter.term) query.term = filter.term
-        if (filter.friend !== null) query.friend = String(filter.friend)
-    if (currentPage !== 1) query.page = String(currentPage)
-
-        const queryToString = new URLSearchParams(query)
 
         history({
             pathname: '/users',
-            search: queryToString.toString(),
+            search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`,
         })
     }, [filter, currentPage])
 
-    const onPageChanged =(pageNumber: number)=> {
+    const onPageChanged = (pageNumber: number) => {
         dispatch(requestUsers(pageNumber, pageSize, filter));
     }
     const onFilterChanged = (filter: FilterType) => {

@@ -15,8 +15,10 @@ import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import {AppStateType} from "./redux/redux-store";
+
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const UsersPage = React.lazy(() => import('./components/Users/UsersContainer'));
+const ChatPage = React.lazy(() => import("./pages/Chat/ChatPage"));
 
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
@@ -50,6 +52,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                             <Route path="/music" element={<Music/>}/>
                             <Route path="/users" element={<UsersPage/>}/>
                             <Route path="/login" element={<LoginPage/>}/>
+                            <Route path="/chat" element={<ChatPage/>}/>
                             <Route path="*" element={<img src={notFound} alt="error"/> }/>
                         </Routes>
                         </Suspense>
