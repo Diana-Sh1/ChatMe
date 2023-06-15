@@ -1,14 +1,11 @@
 import {FC, useEffect, useState} from "react";
-import pic from "../../assets/friend2.png"
 import s from "./ChatPage.module.css"
+import {ChatMessageType} from "../../api/chat-api";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, AppStateType} from "../../redux/redux-store";
+import {sendMessage, startMessagesListening, stopMessagesListening} from "../../redux/chat-reduces";
 
 
-export type ChatMessageType = {
-    message: string
-    photo: string
-    userId: number
-    userName: string
-}
 const ChatPage: FC = () => {
     return <div>
         <Chat/>
@@ -16,35 +13,22 @@ const ChatPage: FC = () => {
 }
 
 const Chat: FC = () => {
-    const [wsChannel, setWsChannel] = useState<WebSocket | null>(null)
-
-    useEffect(()=>{
-        function createChannel(){
-            setWsChannel(new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx'))
-        }
-        createChannel();
-
-    },[])
-    useEffect(()=>{
-        wsChannel?.addEventListener('close', ()=>{
-            console.log('CLOSE WS')
-        })
-    },[wsChannel])
-
-    return <div>
-        <Messages wsChannel={wsChannel}/>
-        <AddMessageForm wsChannel={wsChannel}/>
-    </div>
-}
-const Messages: FC<{wsChannel: WebSocket | null}> = ({wsChannel}) => {
-    const [messages, setMessages] = useState<ChatMessageType[]>([])
+    const dispatch: AppDispatch = useDispatch()
 
     useEffect(() => {
-        wsChannel?.addEventListener('message', (e: MessageEvent) => {
-            let newMessages = JSON.parse(e.data);
-            setMessages((prevMessages) => [...prevMessages, ...newMessages])
-        })
-    }, [wsChannel])
+        dispatch(startMessagesListening)
+        return () => {
+            dispatch(stopMessagesListening())
+        }
+    }, [])
+
+    return <div>
+        <Messages/>
+        <AddMessageForm/>
+    </div>
+}
+const Messages: FC= () => {
+const messages = useSelector((state: AppStateType) =>state.chat.messages)
 
     return <div style={{height: "400px", overflowY: "auto"}}>
         {messages.map((m, index) => <Message key={index} message={m}/>)}
@@ -61,20 +45,18 @@ const Message: FC<{ message: ChatMessageType }> = ({message}) => {
 }
 
 
-const AddMessageForm: FC<{wsChannel: WebSocket | null}> = ({wsChannel}) => {
+const AddMessageForm: FC = () => {
     const [message, setMessage] = useState('');
     const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending');
 
-    useEffect(() => {
-        wsChannel?.addEventListener('open', () => {
-            setReadyStatus('ready')
-        })
-    },[wsChannel])
-    const sendMessage = () => {
+    const dispatch: AppDispatch = useDispatch()
+
+
+    const sendMessageHandler = () => {
         if (!message) {
             return
         }
-        wsChannel?.send(message)
+        dispatch(sendMessage(message))
         setMessage('')
     }
     return <div>
@@ -82,7 +64,7 @@ const AddMessageForm: FC<{wsChannel: WebSocket | null}> = ({wsChannel}) => {
             <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
         </div>
         <div>
-            <button disabled={wsChannel === null || readyStatus !== 'ready'} onClick={sendMessage}>Send</button>
+            <button disabled={false} onClick={sendMessageHandler}>Send</button>
         </div>
 
     </div>
