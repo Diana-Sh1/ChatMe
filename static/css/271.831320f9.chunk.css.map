@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/271.831320f9.chunk.css","mappings":"AAAA,qBACI,UACJ,CACA,GAEI,yBAA0B,CAD1B,UAEJ","sources":["pages/Chat/ChatPage.module.css"],"sourcesContent":[".pic {\n    width: 20px;\n}\nhr {\n    height: 1px;\n    border-top: 1px solid gray;\n}"],"names":[],"sourceRoot":""}
