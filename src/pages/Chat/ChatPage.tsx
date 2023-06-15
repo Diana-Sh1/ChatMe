@@ -1,9 +1,8 @@
 import {FC, useEffect, useState} from "react";
 import pic from "../../assets/friend2.png"
 import s from "./ChatPage.module.css"
-import message from "../../components/Dialogs/Message/Message";
 
-const ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
+
 export type ChatMessageType = {
     message: string
     photo: string
@@ -16,30 +15,45 @@ const ChatPage: FC = () => {
     </div>
 }
 
-
 const Chat: FC = () => {
+    const [wsChannel, setWsChannel] = useState<WebSocket | null>(null)
+
+    useEffect(()=>{
+        function createChannel(){
+            setWsChannel(new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx'))
+        }
+        createChannel();
+
+    },[])
+    useEffect(()=>{
+        wsChannel?.addEventListener('close', ()=>{
+            console.log('CLOSE WS')
+        })
+    },[wsChannel])
 
     return <div>
-        <Messages/>
-        <AddMessageForm/>
+        <Messages wsChannel={wsChannel}/>
+        <AddMessageForm wsChannel={wsChannel}/>
     </div>
 }
-const Messages: FC = () => {
- const [messages, setMessages] = useState<ChatMessageType[]>([])
-    useEffect(()=>{
-        ws.addEventListener('message', (e)=>{
-            setMessages(JSON.parse(e.data))
+const Messages: FC<{wsChannel: WebSocket | null}> = ({wsChannel}) => {
+    const [messages, setMessages] = useState<ChatMessageType[]>([])
+
+    useEffect(() => {
+        wsChannel?.addEventListener('message', (e: MessageEvent) => {
+            let newMessages = JSON.parse(e.data);
+            setMessages((prevMessages) => [...prevMessages, ...newMessages])
         })
-    },[])
+    }, [wsChannel])
 
     return <div style={{height: "400px", overflowY: "auto"}}>
-        {messages.map ((m, index) => <Message key={index} message={m}/>)}
+        {messages.map((m, index) => <Message key={index} message={m}/>)}
 
     </div>
 }
-const Message: FC<{message: ChatMessageType}> = ({message}) => {
+const Message: FC<{ message: ChatMessageType }> = ({message}) => {
     return <div>
-        <img  className={s.pic} src={message.photo}/> <b>{message.userName}</b>
+        <img className={s.pic} src={message.photo}/> <b>{message.userName}</b>
         <br/>
         {message.message}
         <hr/>
@@ -47,13 +61,28 @@ const Message: FC<{message: ChatMessageType}> = ({message}) => {
 }
 
 
-const AddMessageForm: FC = () => {
+const AddMessageForm: FC<{wsChannel: WebSocket | null}> = ({wsChannel}) => {
+    const [message, setMessage] = useState('');
+    const [readyStatus, setReadyStatus] = useState<'pending' | 'ready'>('pending');
+
+    useEffect(() => {
+        wsChannel?.addEventListener('open', () => {
+            setReadyStatus('ready')
+        })
+    },[wsChannel])
+    const sendMessage = () => {
+        if (!message) {
+            return
+        }
+        wsChannel?.send(message)
+        setMessage('')
+    }
     return <div>
         <div>
-            <textarea name="" id=""></textarea>
+            <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
         </div>
         <div>
-            <button>Send</button>
+            <button disabled={wsChannel === null || readyStatus !== 'ready'} onClick={sendMessage}>Send</button>
         </div>
 
     </div>
