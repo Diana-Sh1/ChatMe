@@ -1,6 +1,7 @@
 import {chatAPI, ChatMessageType, StatusType} from "../api/chat-api";
 import {BaseThunkType, InferActionsTypes} from "./redux-store";
 import {Dispatch} from "redux";
+import {v1} from 'uuid'
 
 
 let initialState = {
@@ -12,7 +13,7 @@ const chatReducer = (state = initialState, action: ActionsTypes): InitialStateTy
         case 'MESSAGES_RECEIVED':
             return {
                 ...state,
-                messages: [...state.messages, ...action.payload.messages]
+                messages: [...state.messages, ...action.payload.messages.map(m=> {...m, id: uuid()})].filter((m, index, array)=> index>= array.length - 100)
             }
         case 'STATUS_CHANGED':
             return {

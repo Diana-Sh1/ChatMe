@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 import s from "./ChatPage.module.css"
 import {ChatMessageType} from "../../api/chat-api";
 import {useDispatch, useSelector} from "react-redux";
@@ -33,13 +33,23 @@ const Chat: FC = () => {
     </div>
 }
 const Messages: FC = () => {
+    const messagesAnchorRef = useRef<HTMLDivElement>(null)
     const messages = useSelector((state: AppStateType) => state.chat.messages)
+    const [isAutoScroll, setIsAutoScroll] = useState(true)
+
+    useEffect(()=>{
+        if(isAutoScroll) {
+            messagesAnchorRef.current?.scrollIntoView({behavior:'smooth'})
+        }
+
+    },[messages])
 
     return <div style={{height: "400px", overflowY: "auto"}}>
         {messages.map((m, index) => <Message key={index} message={m}/>)}
-
+        <div ref={messagesAnchorRef}></div>
     </div>
 }
+
 const Message: FC<{ message: ChatMessageType }> = ({message}) => {
     return <div>
         <img className={s.pic} src={message.photo}/> <b>{message.userName}</b>
