@@ -1,6 +1,6 @@
 import {FC, useEffect, useRef, useState} from "react";
 import s from "./ChatPage.module.css"
-import {ChatMessageType} from "../../api/chat-api";
+import {ChatMessageAPIType} from "../../api/chat-api";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, AppStateType} from "../../redux/redux-store";
 import {sendMessage, startMessagesListening, stopMessagesListening} from "../../redux/chat-reduces";
@@ -50,7 +50,7 @@ const Messages: FC = () => {
     </div>
 }
 
-const Message: FC<{ message: ChatMessageType }> = ({message}) => {
+const Message: FC<{ message: ChatMessageAPIType }> = ({message}) => {
     return <div>
         <img className={s.pic} src={message.photo}/> <b>{message.userName}</b>
         <br/>
@@ -63,6 +63,7 @@ const Message: FC<{ message: ChatMessageType }> = ({message}) => {
 const AddMessageForm: FC = () => {
     const [message, setMessage] = useState('');
     const status = useSelector((state: AppStateType) => state.chat.status)
+
 
     const dispatch: AppDispatch = useDispatch()
     const sendMessageHandler = () => {

@@ -4,7 +4,7 @@ import usersReducer, {actions, InitialState} from "./users-reducer";
 let state: InitialState;
 
 beforeEach(()=> {
-    state = {
+   let state = {
         users: [{
             id: 0, name: 'Dymych 1', followed: false, photos: {small: null, large: null}, status: 'status 0'
         },

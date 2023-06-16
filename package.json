@@ -27,6 +27,9 @@
     "web-vitals": "^2.1.4",
     "yup": "^1.0.2"
   },
+  "overrides": {
+    "typescript": "^5.0.4"
+  },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -59,6 +62,7 @@
     ]
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.2",
     "gh-pages": "^5.0.0"
   }
 }
