@@ -134,7 +134,7 @@
     height: 70px;
     resize: none;
     border-radius: 15px;
-    border-bottom-right-radius: 0;
+    border-bottom-right-radius: 15px;
     background-color: #fff;
     padding: 7px;
     width: 100%;
@@ -143,3 +143,4 @@
     display: flex;
     justify-content: end;
 }
+

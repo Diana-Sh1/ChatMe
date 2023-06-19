@@ -4,10 +4,11 @@ import {ChatMessageAPIType} from "../../api/chat-api";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, AppStateType} from "../../redux/redux-store";
 import {sendMessage, startMessagesListening, stopMessagesListening} from "../../redux/chat-reduces";
+import Button from "../../components/Button/Button";
 
 
 const ChatPage: FC = () => {
-    return <div>
+    return <div className={s.content}>
         <Chat/>
     </div>
 }
@@ -23,7 +24,7 @@ const Chat: FC = () => {
         }
     }, [])
 
-    return <div>
+    return <div className={s.wrapper}>
         {status === 'error' ? <div>Some error occured. Please refresh the page.</div> :
             <>
                 <Messages/>
@@ -41,21 +42,21 @@ const Messages: FC = () => {
         if(isAutoScroll) {
             messagesAnchorRef.current?.scrollIntoView({behavior:'smooth'})
         }
-
     },[messages])
-
-    return <div style={{height: "400px", overflowY: "auto"}}>
+    return <div className={s.messages}>
         {messages.map((m, index) => <Message key={index} message={m}/>)}
         <div ref={messagesAnchorRef}></div>
     </div>
 }
 
 const Message: FC<{ message: ChatMessageAPIType }> = ({message}) => {
-    return <div>
-        <img className={s.pic} src={message.photo}/> <b>{message.userName}</b>
-        <br/>
-        {message.message}
-        <hr/>
+    return <div className={s.message_item}>
+        <div className={s.person_info}>
+            <img className={s.pic} src={message.photo}/>
+            <b className={s.username}>{message.userName}</b>
+        </div>
+        <div className={s.text}>{message.message}</div>
+
     </div>
 }
 
@@ -73,14 +74,11 @@ const AddMessageForm: FC = () => {
         dispatch(sendMessage(message))
         setMessage('')
     }
-    return <div>
-        <div>
-            <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
+    return <div className={s.messages}>
+        <div className={s.message_wrapper}>
+            <textarea className={s.textarea} onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
+            <div className={s.btn_wrapper}  onClick={sendMessageHandler}><Button/></div>
         </div>
-        <div>
-            <button disabled={status !== 'ready'} onClick={sendMessageHandler}>Send</button>
-        </div>
-
     </div>
 }
 
