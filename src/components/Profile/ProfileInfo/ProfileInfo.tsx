@@ -20,9 +20,10 @@ import {
 
 
 const ProfileInfo: FC = () => {
-    const refreshProfile =()=>{
+   const refreshProfile =()=>{
+
         // @ts-ignore
-        let userId: number | null = params.userId;
+        let userId: number | null  = params.userId;
         if (!userId) {
             userId = authorizedUserId;
             if (!userId) {

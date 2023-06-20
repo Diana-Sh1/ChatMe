@@ -3,7 +3,6 @@ import React from "react";
 import {Routes, Route, HashRouter, Navigate} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import SoChatty from "./components/SoChatty/SoChatty";
-import Music from "./components/Music/Music";
 import notFound from "./assets/404.jpeg"
 // import DialogsContainer from "./components/Dialogs/DialogsContainer";
 // import UsersContainer from "./components/Users/UsersContainer";
@@ -49,7 +48,6 @@ class App extends Component<MapPropsType & DispatchPropsType> {
                                 <Route path=":userId" element={<ProfileContainer/>}/>
                             </Route>
                             <Route path="/dialogs/*" element={<DialogsContainer/>}/>
-                            <Route path="/music" element={<Music/>}/>
                             <Route path="/users" element={<UsersPage/>}/>
                             <Route path="/login" element={<LoginPage/>}/>
                             <Route path="/chat" element={<ChatPage/>}/>

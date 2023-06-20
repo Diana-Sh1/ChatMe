@@ -8,6 +8,7 @@ import Button from "../../components/Button/Button";
 
 
 const ChatPage: FC = () => {
+
     return <div className={s.content}>
         <Chat/>
     </div>
@@ -63,7 +64,7 @@ const Message: FC<{ message: ChatMessageAPIType }> = ({message}) => {
 
 const AddMessageForm: FC = () => {
     const [message, setMessage] = useState('');
-    const status = useSelector((state: AppStateType) => state.chat.status)
+    // const status = useSelector((state: AppStateType) => state.chat.status)
 
 
     const dispatch: AppDispatch = useDispatch()
