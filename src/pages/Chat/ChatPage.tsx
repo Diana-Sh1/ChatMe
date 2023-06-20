@@ -41,12 +41,12 @@ const Messages: FC = () => {
 
     useEffect(()=>{
         if(isAutoScroll) {
-            messagesAnchorRef.current?.scrollIntoView({behavior:'smooth'})
+            messagesAnchorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
         }
     },[messages])
     return <div className={s.messages}>
         {messages.map((m, index) => <Message key={index} message={m}/>)}
-        <div ref={messagesAnchorRef}></div>
+        <div className={s.messages_inner} ref={messagesAnchorRef}></div>
     </div>
 }
 

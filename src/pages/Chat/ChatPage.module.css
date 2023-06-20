@@ -22,6 +22,11 @@ border-radius: 15px;
     position: relative;
     overflow-y: auto;
     height: 100%;
+
+}
+.messages_inner {
+    position: absolute;
+    top: -20px;
 }
 .message_wrapper {
     /*margin: 0 30px;*/
