@@ -8,7 +8,6 @@ import Button from "../../components/Button/Button";
 
 
 const ChatPage: FC = () => {
-
     return <div className={s.content}>
         <Chat/>
     </div>
